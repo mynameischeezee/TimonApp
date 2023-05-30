@@ -7,8 +7,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Ho"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="Views/NewPage1" />
+        ContentTemplate="{DataTemplate Timon.Maui.Views.LoginPage}"
+        Route="Views/LoginPage" />
 
 </Shell>

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Timon.Maui.ViewModels.Authentication;
+using Timon.Maui.Views.Authentication;
 
 namespace Timon.Maui;
 
@@ -28,7 +30,8 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<LoginPageViewModel>();
         return builder.Build();
     }
 }

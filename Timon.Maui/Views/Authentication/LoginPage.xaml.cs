@@ -1,4 +1,4 @@
-namespace Timon.Maui.Views;
+namespace Timon.Maui.Views.Authentication;
 
 public partial class LoginPage : ContentPage
 {

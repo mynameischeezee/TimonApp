@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Timon.Maui.Views.Authentication.RegisterPage"
+             Title="RegisterPage">
+    <VerticalStackLayout  VerticalOptions="CenterAndExpand" WidthRequest="300">
+        <Image Source="{AppThemeBinding Light=logo_light.svg, Dark=logo_dark.svg}" WidthRequest="100" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+        <Label Text="Register" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
+
+        <Entry Placeholder="Username" Text="{Binding Username}"/>
+        <Entry Placeholder="Email" Text="{Binding Username}"/>
+        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
+
+        <Button Text="Register" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand" Margin="0,20,0,0"/>
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
+            <Label Text="Already have an account?" TextColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray100}}" />
+            <Label Text="Login" TextColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Primary}}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SwitchToLogin}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

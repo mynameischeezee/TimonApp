@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Timon.Maui.ViewModels.Authentication
+namespace Timon.Maui.ViewModels.Settings
 {
-    internal class RegisterPageViewModel
+    internal class ProfileViewModel
     {
     }
 }

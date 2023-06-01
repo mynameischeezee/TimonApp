@@ -60,4 +60,9 @@
       </MauiXaml>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Views\MoneyRecord\" />
+      <Folder Include="Views\TimeRecord\" />
+    </ItemGroup>
+
 </Project>

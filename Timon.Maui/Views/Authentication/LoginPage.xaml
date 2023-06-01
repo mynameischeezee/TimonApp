@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.Authentication.LoginPage">
     <VerticalStackLayout  VerticalOptions="CenterAndExpand" WidthRequest="300">
-        <Image Source="{AppThemeBinding Light=logo_light.svg, Dark=logo_dark.svg}" WidthRequest="100" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+        <Image Source="{AppThemeBinding Light=logo_light.svg, Dark=logo_dark.svg}" Margin="40" VerticalOptions="Center" HorizontalOptions="Center"></Image>
         <Label Text="Login" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
 
         <Entry Placeholder="Username" Text="{Binding Username}"/>

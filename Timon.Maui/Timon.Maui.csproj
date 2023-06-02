@@ -52,6 +52,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Timon.Abstract\Timon.Abstract.csproj" />
+      <ProjectReference Include="..\Timon.Business\Timon.Business.csproj" />
+      <ProjectReference Include="..\Timon.DataAccess\Timon.DataAccess.csproj" />
+      <ProjectReference Include="..\Timon.Exceptions\Timon.Exceptions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
       <MauiXaml Update="Views\Authentication\LoginPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

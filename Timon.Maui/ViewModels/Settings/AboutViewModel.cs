@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Timon.Abstract.ViewModel;
 
 namespace Timon.Maui.ViewModels.Settings
 {
-    internal class AboutViewModel
+    internal class AboutViewModel : ViewModelBase
     {
     }
 }

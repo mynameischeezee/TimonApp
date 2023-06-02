@@ -76,6 +76,9 @@
       <MauiXaml Update="Views\Settings\SettingsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Views\Statistics\StatisticsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Views\TimeRecord\AddTimeRecordPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

@@ -1,6 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
+using Timon.Maui.Extensions;
 using Timon.Maui.ViewModels.Authentication;
+using Timon.Maui.ViewModels.MoneyRecord;
+using Timon.Maui.ViewModels.Settings;
+using Timon.Maui.ViewModels.TimeRecord;
 using Timon.Maui.Views.Authentication;
+using Timon.Maui.Views.MoneyRecord;
+using Timon.Maui.Views.Settings;
+using Timon.Maui.Views.TimeRecord;
 
 namespace Timon.Maui;
 
@@ -11,27 +18,17 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Bold.ttf", "OpenSansBold");
-                fonts.AddFont("OpenSans-BoldItalic.ttf", "OpenSansBoldItalic");
-                fonts.AddFont("OpenSans-ExtraBold.ttf", "OpenSansExtraBold");
-                fonts.AddFont("OpenSans-ExtraBoldItalic.ttf", "OpenSansExtraBoldItalic");
-                fonts.AddFont("OpenSans-Italic.ttf", "OpenSansItalic");
-                fonts.AddFont("OpenSans-Light.ttf", "OpenSansLight");
-                fonts.AddFont("OpenSans-LightItalic.ttf", "OpenSansLightItalic");
-                fonts.AddFont("OpenSans-Medium.ttf", "OpenSansMedium");
-                fonts.AddFont("OpenSans-MediumItalic.ttf", "OpenSansMediumItalic");
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-SemiBold.ttf", "OpenSansSemiBold");
-                fonts.AddFont("OpenSans-SemiBoldItalic.ttf", "OpenSansSemiBoldItalic");
-            });
+            .RegisterFonts();
+            
 
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-        builder.Services.AddSingleton<LoginPage>();
-        builder.Services.AddSingleton<LoginPageViewModel>();
+        builder
+            .RegisterAppServices()
+            .RegisterViews()
+            .RegisterViewModels();
+
         return builder.Build();
     }
 }

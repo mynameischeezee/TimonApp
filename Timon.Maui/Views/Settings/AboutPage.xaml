@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.Settings.AboutPage"
              xmlns:SettingsViewModel="clr-namespace:Timon.Maui.ViewModels.Settings">
-
     <ContentPage.BindingContext>
         <SettingsViewModel:AboutViewModel/>
     </ContentPage.BindingContext>

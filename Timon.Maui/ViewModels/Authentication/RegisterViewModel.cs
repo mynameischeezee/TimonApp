@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace Timon.Maui.ViewModels.Authentication
 {
-    internal class LoginPageViewModel
+    internal class RegisterViewModel
     {
-        public LoginPageViewModel()
-        {
-#if DEBUG
-
-#endif
-        }
     }
-};
+}

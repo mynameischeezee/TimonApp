@@ -1,8 +1,9 @@
-﻿using Timon.Abstract.ViewModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Timon.Abstract.ViewModel;
 
 namespace Timon.Maui.ViewModels.Settings
 {
-    internal class ProfileViewModel : ViewModelBase
+    public partial class ProfileViewModel : ObservableObject
     {
     }
 }

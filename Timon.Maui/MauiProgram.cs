@@ -28,7 +28,7 @@ public static class MauiProgram
             .RegisterAppServices()
             .RegisterViews()
             .RegisterViewModels();
-
+        RegisterNavigationRoutes.Register();
         return builder.Build();
     }
 }

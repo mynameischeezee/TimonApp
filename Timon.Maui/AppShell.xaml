@@ -1,14 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <Shell
     x:Class="Timon.Maui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Timon.Maui"
-    xmlns:AuthenticationViews="clr-namespace:Timon.Maui.Views.Authentication"
-    Shell.FlyoutBehavior="Disabled">
-
+    xmlns:moneyRecordViews="clr-namespace:Timon.Maui.Views.MoneyRecord"
+    xmlns:timeRecordViews="clr-namespace:Timon.Maui.Views.TimeRecord"
+    xmlns:settingsViews="clr-namespace:Timon.Maui.Views.Settings"
+    xmlns:statisticsViews="clr-namespace:Timon.Maui.Views.Statistics"
+    xmlns:authentication="clr-namespace:Timon.Maui.Views.Authentication">
     <ShellContent
-        ContentTemplate="{DataTemplate AuthenticationViews:LoginPage}"
+        Title="Login Page" FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate authentication:LoginPage}"
         Route="LoginPage" />
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Money records"
+                      Icon="{AppThemeBinding Light=money_dark.png, Dark=money_light.svg}"
+                      ContentTemplate="{DataTemplate moneyRecordViews:MoneyRecordsPage}" />
 
+
+        <ShellContent Title="Time records"
+                      Icon="{AppThemeBinding Light=time_dark.png, Dark=time_light.svg}"
+                      ContentTemplate="{DataTemplate timeRecordViews:TimeRecordsPage}" />
+
+
+        <ShellContent Title="Statistics"
+                      Icon="{AppThemeBinding Light=statistics_dark.png, Dark=statistics_light.svg}"
+                      ContentTemplate="{DataTemplate statisticsViews:StatisticsPage}" />
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Profile"
+                      Icon="{AppThemeBinding Light=settings_dark.png, Dark=settings_light.svg}"
+                      ContentTemplate="{DataTemplate settingsViews:ProfilePage}" />
+
+        <ShellContent Title="Settings"
+                      Icon="{AppThemeBinding Light=settings_dark.png, Dark=settings_light.svg}"
+                      ContentTemplate="{DataTemplate settingsViews:SettingsPage}" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="30">
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
 </Shell>

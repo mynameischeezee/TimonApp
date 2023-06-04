@@ -1,8 +1,9 @@
-﻿using Timon.Abstract.ViewModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Timon.Abstract.ViewModel;
 
 namespace Timon.Maui.ViewModels.TimeRecord
 {
-    internal class TimeRecordsViewModel : ViewModelBase
+    public partial class TimeRecordsViewModel : ObservableObject
     {
     }
 }

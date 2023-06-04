@@ -20,7 +20,6 @@ namespace Timon.Maui.Extensions
             builder.Services.AddSingleton<AddMoneyRecordPage>();
             builder.Services.AddSingleton<EditMoneyRecordPage>();
             builder.Services.AddSingleton<MoneyRecordsPage>();
-            builder.Services.AddSingleton<AboutPage>();
             builder.Services.AddSingleton<ProfilePage>();
             builder.Services.AddSingleton<SettingsPage>();
             builder.Services.AddSingleton<AddTimeRecordPage>();

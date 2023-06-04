@@ -1,8 +1,9 @@
-﻿using Timon.Abstract.ViewModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Timon.Abstract.ViewModel;
 
 namespace Timon.Maui.ViewModels.MoneyRecord
 {
-    internal class AddMoneyRecordViewModel : ViewModelBase
+    public partial class AddMoneyRecordViewModel : ObservableObject
     {
     }
 }

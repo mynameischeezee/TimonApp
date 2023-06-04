@@ -12,4 +12,15 @@
       <ProjectReference Include="..\Timon.Exceptions\Timon.Exceptions.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="MoneyRecord\" />
+      <Folder Include="Statistics\" />
+      <Folder Include="User\" />
+      <Folder Include="TimeRecord\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Mono.Api.Connector" Version="2.0.0" />
+    </ItemGroup>
+
 </Project>

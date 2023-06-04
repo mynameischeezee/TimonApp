@@ -1,21 +1,22 @@
-﻿using System.Windows.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Timon.Abstract.Authentication;
-using Timon.Abstract.ViewModel;
 
 namespace Timon.Maui.ViewModels.Authentication
 {
     public partial class LoginViewModel : ObservableObject
     {
+        private readonly IAuthenticationService authenticationService;
+
         [ObservableProperty]
         private string _username;
 
         [ObservableProperty]
         private string _password;
 
-        public LoginViewModel(ILoginUserService loginUserService)
+        public LoginViewModel(IAuthenticationService authenticationService)
         {
+            this.authenticationService = authenticationService;
 #if DEBUG
             Username = "cheeze";
             Password = "Pa$s123=";
@@ -31,6 +32,7 @@ namespace Timon.Maui.ViewModels.Authentication
         [RelayCommand]
         private async void Login()
         {
+            authenticationService.Login(username: Username, password: Password);
             await Shell.Current.GoToAsync("MoneyRecord/moneyRecords");
         }
 

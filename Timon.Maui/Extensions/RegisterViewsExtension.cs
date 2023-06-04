@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Timon.Maui.Views.Authentication;
+﻿using Timon.Maui.Views.Authentication;
 using Timon.Maui.Views.MoneyRecord;
 using Timon.Maui.Views.Settings;
 using Timon.Maui.Views.Statistics;

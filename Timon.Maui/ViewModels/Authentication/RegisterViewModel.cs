@@ -1,30 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Timon.Abstract.Authentication;
-using Timon.Abstract.ViewModel;
 
 namespace Timon.Maui.ViewModels.Authentication
 {
     public partial class RegisterViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private string username;
+        private readonly IAuthenticationService _authenticationService;
 
         [ObservableProperty]
-        private string password;
+        private string _username;
 
         [ObservableProperty]
-        private string email;
+        private string _password;
+
+        [ObservableProperty]
+        private string _email;
 
 
-        public RegisterViewModel()
+        public RegisterViewModel(IAuthenticationService authenticationService)
         {
+            this._authenticationService = authenticationService;
 #if DEBUG
             Username = "cheeze";
             Email = "testmail@gmail.com";

@@ -6,4 +6,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="DataAccess\Repository\" />
+      <Folder Include="Statistics\" />
+      <Folder Include="User\" />
+      <Folder Include="TimeRecord\" />
+    </ItemGroup>
+
 </Project>

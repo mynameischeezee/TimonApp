@@ -1,13 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 using Timon.Maui.Extensions;
-using Timon.Maui.ViewModels.Authentication;
-using Timon.Maui.ViewModels.MoneyRecord;
-using Timon.Maui.ViewModels.Settings;
-using Timon.Maui.ViewModels.TimeRecord;
-using Timon.Maui.Views.Authentication;
-using Timon.Maui.Views.MoneyRecord;
-using Timon.Maui.Views.Settings;
-using Timon.Maui.Views.TimeRecord;
 
 namespace Timon.Maui;
 
@@ -17,6 +10,7 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
+            .UseSkiaSharp(true)
             .UseMauiApp<App>()
             .RegisterFonts();
             

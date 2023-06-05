@@ -1,10 +1,10 @@
 ﻿namespace Timon.Abstract.Authentication;
 
-public interface IAuthenticationService
+public interface IAuthenticationService<TUser> where TUser : class
 {
-    void Login(string username, string password);
+    TUser Login(string username, string password);
 
-    void Register(string username, string password);
+    TUser Register(string username, string password);
 
-    void SignOut();
+    TUser SignOut();
 }

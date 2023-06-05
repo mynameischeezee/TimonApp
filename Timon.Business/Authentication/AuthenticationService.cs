@@ -3,26 +3,26 @@ using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Business.Authentication;
 
-public class AuthenticationService : IAuthenticationService
+public class AuthenticationService : IAuthenticationService<DataAccess.Models.User>
 {
     private readonly IUnitOfWork _unitOfWork;
     public AuthenticationService(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
-    public void Login(string username, string password)
+
+    public DataAccess.Models.User Login(string username, string password)
     {
-        
+        throw new NotImplementedException();
     }
 
-    public void Register(string username, string password)
+    public DataAccess.Models.User Register(string username, string password)
     {
-        
-        
+        throw new NotImplementedException();
     }
 
-    public void SignOut()
+    public DataAccess.Models.User SignOut()
     {
-        
+        throw new NotImplementedException();
     }
 }

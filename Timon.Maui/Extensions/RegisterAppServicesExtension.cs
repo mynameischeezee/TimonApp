@@ -11,6 +11,7 @@ using Timon.Business.Statistics;
 using Timon.Business.TimeRecord;
 using Timon.Business.User;
 using Timon.DataAccess.Data;
+using Timon.DataAccess.Models;
 using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Maui.Extensions
@@ -22,7 +23,7 @@ namespace Timon.Maui.Extensions
             builder.Services.AddDbContext<TimonDbContext>(options => { options.UseSqlServer("");});
             builder.Services.AddSingleton<IUnitOfWork, UnitOfWork>();
             builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
-            builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddTransient<IUserService<User>, UserService>();
             builder.Services.AddTransient<IMoneyRecordService, MoneyRecordService>();
             builder.Services.AddTransient<ITimeRecordService, TimeRecordService>();
             builder.Services.AddTransient<IStatisticsService, StatisticsService>();

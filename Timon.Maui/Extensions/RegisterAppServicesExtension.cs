@@ -27,7 +27,7 @@ namespace Timon.Maui.Extensions
             builder.Services.AddTransient<IUserService<User>, UserService>();
             builder.Services.AddTransient<IMoneyRecordService<MoneyRecord, User>, MoneyRecordService>();
             builder.Services.AddTransient<ITimeRecordService<TimeRecord, User>, TimeRecordService>();
-            builder.Services.AddTransient<IStatisticsService, StatisticsService>();
+            builder.Services.AddTransient<IStatisticsService<User>, StatisticsService>();
             builder.Services.AddMonoApi("u9gPDp_bhAXMR6Jsk2IFISgzoVq4VtweErqFxW-GM3TY");
 
             return builder;

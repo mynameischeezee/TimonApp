@@ -5,7 +5,7 @@ using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Business.Statistics;
 
-public class StatisticsService : IStatisticsService
+public class StatisticsService : IStatisticsService<DataAccess.Models.User>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ITimeRecordService<DataAccess.Models.TimeRecord, DataAccess.Models.User> _timeRecordService;
@@ -20,12 +20,12 @@ public class StatisticsService : IStatisticsService
         _moneyRecordService = moneyRecordService;
     }
 
-    public Task<IEnumerable<int>> GenerateMoneyRecordsStatistics(DateTime from, DateTime to)
+    public Task<IEnumerable<int>> GenerateMoneyRecordsStatistics(DataAccess.Models.User user, DateTime from, DateTime to)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<int>> GenerateTimeRecordsStatistics(DateTime from, DateTime to)
+    public Task<IEnumerable<int>> GenerateTimeRecordsStatistics(DataAccess.Models.User user, DateTime from, DateTime to)
     {
         throw new NotImplementedException();
     }

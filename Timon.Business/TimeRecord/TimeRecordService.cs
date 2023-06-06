@@ -12,27 +12,27 @@ public class TimeRecordService : ITimeRecordService<DataAccess.Models.TimeRecord
         _unitOfWork = unitOfWork;
     }
 
-    public DataAccess.Models.TimeRecord CreateTimeRecord()
+    public Task<DataAccess.Models.TimeRecord> CreateTimeRecord(DataAccess.Models.User user, DataAccess.Models.TimeRecord record)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.TimeRecord DeleteTimeRecord(DataAccess.Models.TimeRecord record)
+    public Task<DataAccess.Models.TimeRecord> DeleteTimeRecord(DataAccess.Models.TimeRecord record)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.TimeRecord UpdateTimeRecord(DataAccess.Models.TimeRecord record)
+    public Task<DataAccess.Models.TimeRecord> UpdateTimeRecord(DataAccess.Models.TimeRecord record)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<DataAccess.Models.TimeRecord> GetAllUsersTimeRecords(DataAccess.Models.User user)
+    public Task<IEnumerable<DataAccess.Models.TimeRecord>> GetAllUsersTimeRecords(DataAccess.Models.User user)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.TimeRecord GetTimeRecord(DataAccess.Models.User user)
+    public Task<DataAccess.Models.TimeRecord?> GetTimeRecord(DataAccess.Models.User user)
     {
         throw new NotImplementedException();
     }

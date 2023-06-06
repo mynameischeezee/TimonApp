@@ -1,13 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Timon.Abstract.MoneyRecord;
+using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.MoneyRecord
 {
     public partial class MoneyRecordsViewModel : ObservableObject
     {
-        private readonly IMoneyRecordService _moneyRecordService;
+        private readonly IMoneyRecordService<DataAccess.Models.MoneyRecord, User> _moneyRecordService;
 
-        public MoneyRecordsViewModel(IMoneyRecordService moneyRecordService)
+        public MoneyRecordsViewModel(IMoneyRecordService<DataAccess.Models.MoneyRecord, User> moneyRecordService)
         {
             _moneyRecordService = moneyRecordService;
         }

@@ -1,10 +1,10 @@
 ﻿namespace Timon.Abstract.User;
 
-public interface IUserService<T> where T : class
+public interface IUserService<TUser> where TUser : class
 {
-    T CreateUser(string username, string email, string password);
-    T DeleteUser(T record);
-    T UpdateUser(T record);
-    IEnumerable<T> GetAllUsers();
-    T GetUser(int id);
+    Task<TUser> CreateUser(string username, string email, string password);
+    Task<TUser> DeleteUser(TUser record);
+    Task <TUser> UpdateUser(TUser record);
+    Task<IEnumerable<TUser>> GetAllUsers();
+    Task<TUser> GetUser(int id);
 }

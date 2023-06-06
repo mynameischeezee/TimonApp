@@ -12,32 +12,32 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
         _unitOfWork = unitOfWork;
     }
 
-    public DataAccess.Models.MoneyRecord GetLastTransactionFromBank()
+    public Task<DataAccess.Models.MoneyRecord> GetLastTransactionFromBank(DataAccess.Models.User user)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.MoneyRecord CreateMoneyRecord()
+    public Task<DataAccess.Models.MoneyRecord> CreateMoneyRecord(DataAccess.Models.User user, DataAccess.Models.MoneyRecord record)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.MoneyRecord DeleteMoneyRecord(DataAccess.Models.MoneyRecord record)
+    public Task<DataAccess.Models.MoneyRecord> DeleteMoneyRecord(DataAccess.Models.MoneyRecord record)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.MoneyRecord UpdateMoneyRecord(DataAccess.Models.MoneyRecord record)
+    public Task<DataAccess.Models.MoneyRecord> UpdateMoneyRecord(DataAccess.Models.MoneyRecord record)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<DataAccess.Models.MoneyRecord> GetAllUsersMoneyRecords(DataAccess.Models.User user)
+    public Task<IEnumerable<DataAccess.Models.MoneyRecord>> GetAllUsersMoneyRecords(DataAccess.Models.User user)
     {
         throw new NotImplementedException();
     }
 
-    public DataAccess.Models.MoneyRecord GetMoneyRecord(DataAccess.Models.User user)
+    public Task<DataAccess.Models.MoneyRecord?> GetMoneyRecord(DataAccess.Models.User user)
     {
         throw new NotImplementedException();
     }

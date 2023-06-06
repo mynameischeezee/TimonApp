@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Timon.Abstract.Authentication;
+using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.Authentication
 {
     public partial class RegisterViewModel : ObservableObject
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly IAuthenticationService<User> _authenticationService;
 
         [ObservableProperty]
         private string _username;
@@ -18,7 +19,7 @@ namespace Timon.Maui.ViewModels.Authentication
         private string _email;
 
 
-        public RegisterViewModel(IAuthenticationService authenticationService)
+        public RegisterViewModel(IAuthenticationService<User> authenticationService)
         {
             this._authenticationService = authenticationService;
 #if DEBUG

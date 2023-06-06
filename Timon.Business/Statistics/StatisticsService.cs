@@ -20,12 +20,12 @@ public class StatisticsService : IStatisticsService
         _moneyRecordService = moneyRecordService;
     }
 
-    public IEnumerable<int> GenerateMoneyRecordsStatistics(DateTime from, DateTime to)
+    public Task<IEnumerable<int>> GenerateMoneyRecordsStatistics(DateTime from, DateTime to)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<int> GenerateTimeRecordsStatistics(DateTime from, DateTime to)
+    public Task<IEnumerable<int>> GenerateTimeRecordsStatistics(DateTime from, DateTime to)
     {
         throw new NotImplementedException();
     }

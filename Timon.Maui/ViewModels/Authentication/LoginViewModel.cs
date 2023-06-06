@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Timon.Abstract.Authentication;
+using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.Authentication
 {
     public partial class LoginViewModel : ObservableObject
     {
-        private readonly IAuthenticationService authenticationService;
+        private readonly IAuthenticationService<User> authenticationService;
 
         [ObservableProperty]
         private string _username;
@@ -14,7 +15,7 @@ namespace Timon.Maui.ViewModels.Authentication
         [ObservableProperty]
         private string _password;
 
-        public LoginViewModel(IAuthenticationService authenticationService)
+        public LoginViewModel(IAuthenticationService<User> authenticationService)
         {
             this.authenticationService = authenticationService;
 #if DEBUG
@@ -32,7 +33,6 @@ namespace Timon.Maui.ViewModels.Authentication
         [RelayCommand]
         private async void Login()
         {
-            authenticationService.Login(username: Username, password: Password);
             await Shell.Current.GoToAsync("MoneyRecord/moneyRecords");
         }
 

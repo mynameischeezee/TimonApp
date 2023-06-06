@@ -12,42 +12,46 @@ public class UserService : IUserService<DataAccess.Models.User>
         _unitOfWork = unitOfWork;
     }
 
-    public DataAccess.Models.User CreateUser(string username, string email, string password)
+    public async Task<DataAccess.Models.User> CreateUser(string username, string email, string password)
     {
         var user = new DataAccess.Models.User()
         {
             UserName = username,
             Email = email,
-            Password = password
+            Password = password,
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now
         };
-        _unitOfWork.Users.Insert(user);
-        _unitOfWork.Save();
+        await _unitOfWork.Users.Insert(user);
+        await _unitOfWork.Save();
         return user;
     }
 
-    public DataAccess.Models.User DeleteUser(DataAccess.Models.User record)
+    public async Task<DataAccess.Models.User> DeleteUser(DataAccess.Models.User record)
     {
-        _unitOfWork.Users.Delete(record.Id);
-        _unitOfWork.Save();
+        await _unitOfWork.Users.Delete(record.Id);
+        await _unitOfWork.Save();
         return record;
     }
 
-    public DataAccess.Models.User UpdateUser(DataAccess.Models.User record)
+    public async Task<DataAccess.Models.User> UpdateUser(DataAccess.Models.User record)
     {
+        record.UpdatedAt = DateTime.Now;
         _unitOfWork.Users.Update(record);
-        _unitOfWork.Save();
+        await _unitOfWork.Save();
         return record;
     }
 
-    public IEnumerable<DataAccess.Models.User> GetAllUsers()
+    public async Task<IEnumerable<DataAccess.Models.User>> GetAllUsers()
     {
-        var users = _unitOfWork.Users.GetAll();
-        return users.Result;
+        var users = await _unitOfWork.Users.GetAll();
+        return users.ToList();
     }
 
-    public DataAccess.Models.User? GetUser(int id)
+    public async Task<DataAccess.Models.User?> GetUser(int id)
     {
-        var user = GetAllUsers().FirstOrDefault(x => x.Id == id);
-        return user;
+        var user = await GetAllUsers();
+        var currentUser = user.ToList().FirstOrDefault(x => x.Id == id);
+        return currentUser;
     }
 }

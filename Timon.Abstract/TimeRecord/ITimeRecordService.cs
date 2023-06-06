@@ -1,12 +1,12 @@
 ﻿namespace Timon.Abstract.TimeRecord;
 
-public interface ITimeRecordService<TRerecord, in TUser>
-    where TRerecord : class
+public interface ITimeRecordService<TRecord, in TUser>
+    where TRecord : class
     where TUser : class
 {
-    TRerecord CreateTimeRecord();
-    TRerecord DeleteTimeRecord(TRerecord record);
-    TRerecord UpdateTimeRecord(TRerecord record);
-    IEnumerable<TRerecord> GetAllUsersTimeRecords(TUser user);
-    TRerecord GetTimeRecord(TUser user);
+    Task<TRecord> CreateTimeRecord(TUser user, TRecord record);
+    Task<TRecord> DeleteTimeRecord(TRecord record);
+    Task<TRecord> UpdateTimeRecord(TRecord record);
+    Task<IEnumerable<TRecord>> GetAllUsersTimeRecords(TUser user);
+    Task<TRecord?> GetTimeRecord(TUser user);
 }

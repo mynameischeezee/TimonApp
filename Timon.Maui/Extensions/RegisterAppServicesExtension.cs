@@ -20,13 +20,14 @@ namespace Timon.Maui.Extensions
     {
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder builder)
         {
-            builder.Services.AddDbContext<TimonDbContext>(options => { options.UseSqlServer("");});
+            builder.Services.AddDbContext<TimonDbContext>(options => 
+                { options.UseSqlServer("");});
             builder.Services.AddSingleton<IUnitOfWork, UnitOfWork>();
-            builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddTransient<IAuthenticationService<User>, AuthenticationService>();
             builder.Services.AddTransient<IUserService<User>, UserService>();
-            builder.Services.AddTransient<IMoneyRecordService, MoneyRecordService>();
-            builder.Services.AddTransient<ITimeRecordService, TimeRecordService>();
-            builder.Services.AddTransient<IStatisticsService, StatisticsService>();
+            builder.Services.AddTransient<IMoneyRecordService<MoneyRecord, User>, MoneyRecordService>();
+            builder.Services.AddTransient<ITimeRecordService<TimeRecord, User>, TimeRecordService>();
+            builder.Services.AddTransient<IStatisticsService<User>, StatisticsService>();
             builder.Services.AddMonoApi("");
 
             return builder;

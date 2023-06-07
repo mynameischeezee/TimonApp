@@ -1,4 +1,4 @@
-﻿namespace Timon.Abstract.Categories;
+﻿namespace Timon.Abstract.Services.Categories;
 
 public interface ICategoryService<TCategory, in TUser>
     where TCategory : class

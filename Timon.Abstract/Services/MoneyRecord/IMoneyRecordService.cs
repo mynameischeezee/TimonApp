@@ -1,7 +1,7 @@
-﻿namespace Timon.Abstract.MoneyRecord;
+﻿namespace Timon.Abstract.Services.MoneyRecord;
 
-public interface IMoneyRecordService<TRecord, in TUser> 
-    where TRecord : class 
+public interface IMoneyRecordService<TRecord, in TUser>
+    where TRecord : class
     where TUser : class
 {
     Task<TRecord> GetLastTransactionFromBank(TUser user);

@@ -1,4 +1,6 @@
-﻿using Timon.Abstract.MoneyRecord;
+﻿using MonoBankApi.Services;
+using Timon.Abstract.MoneyRecord;
+using Timon.DataAccess.Models;
 using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Business.MoneyRecord;
@@ -6,39 +8,73 @@ namespace Timon.Business.MoneyRecord;
 public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRecord, DataAccess.Models.User>
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMonoPersonal _connector;
 
-    public MoneyRecordService(IUnitOfWork unitOfWork)
+    public MoneyRecordService(IUnitOfWork unitOfWork, IMonoPersonal connector)
     {
         _unitOfWork = unitOfWork;
+        _connector = connector;
     }
 
-    public Task<DataAccess.Models.MoneyRecord> GetLastTransactionFromBank(DataAccess.Models.User user)
+    public async Task<DataAccess.Models.MoneyRecord> GetLastTransactionFromBank(DataAccess.Models.User user)
     {
-        throw new NotImplementedException();
+        var monoTimeRecordsCollection = await _connector.ReturnStatementAsync(DateTime.Now, DateTime.Now-TimeSpan.FromHours(1));
+        var lastMonoTransaction = monoTimeRecordsCollection.Last();
+        var moneyRecord = new DataAccess.Models.MoneyRecord()
+        {
+            Name = "",
+            Description = lastMonoTransaction.Description,
+            Amount = (int)lastMonoTransaction.Amount,
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now
+        };
+        return await CreateMoneyRecord(user, moneyRecord);
+
     }
 
-    public Task<DataAccess.Models.MoneyRecord> CreateMoneyRecord(DataAccess.Models.User user, DataAccess.Models.MoneyRecord record)
+    public async Task<DataAccess.Models.MoneyRecord> CreateMoneyRecord(DataAccess.Models.User user, DataAccess.Models.MoneyRecord record)
     {
-        throw new NotImplementedException();
+        await _unitOfWork.MoneyRecords.Insert(record);
+        var userMoneyRecord = new UserMoneyRecord()
+        {
+            User = user,
+            MoneyRecord = record,
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now
+        };
+        await _unitOfWork.UserMoneyRecords.Insert(userMoneyRecord);
+        await _unitOfWork.Save();
+        return record;
     }
 
-    public Task<DataAccess.Models.MoneyRecord> DeleteMoneyRecord(DataAccess.Models.MoneyRecord record)
+    public async Task<DataAccess.Models.MoneyRecord> DeleteMoneyRecord(DataAccess.Models.MoneyRecord record)
     {
-        throw new NotImplementedException();
+        var userMoneyRecord = await _unitOfWork.UserMoneyRecords.Get(x => x.MoneyRecord.Id == record.Id);
+        await _unitOfWork.UserMoneyRecords.Delete(userMoneyRecord.Id);
+        await _unitOfWork.MoneyRecords.Delete(userMoneyRecord.Id);
+        await _unitOfWork.Save();
+        return record;
     }
 
-    public Task<DataAccess.Models.MoneyRecord> UpdateMoneyRecord(DataAccess.Models.MoneyRecord record)
+    public async Task<DataAccess.Models.MoneyRecord> UpdateMoneyRecord(DataAccess.Models.MoneyRecord record)
     {
-        throw new NotImplementedException();
+        var userMoneyRecord = await _unitOfWork.UserMoneyRecords.Get(x => x.MoneyRecord.Id == record.Id);
+        userMoneyRecord.MoneyRecord = record;
+        _unitOfWork.UserMoneyRecords.Update(userMoneyRecord);
+        _unitOfWork.MoneyRecords.Update(record);
+        await _unitOfWork.Save();
+        return record;
     }
 
-    public Task<IEnumerable<DataAccess.Models.MoneyRecord>> GetAllUsersMoneyRecords(DataAccess.Models.User user)
+    public async Task<IEnumerable<DataAccess.Models.MoneyRecord>> GetAllUsersMoneyRecords(DataAccess.Models.User user)
     {
-        throw new NotImplementedException();
+        var userMoneyRecords = await _unitOfWork.UserMoneyRecords.GetAll(x => x.User.Id == user.Id);
+        return userMoneyRecords.ToList().Select(x => x.MoneyRecord);
     }
 
-    public Task<DataAccess.Models.MoneyRecord?> GetMoneyRecord(DataAccess.Models.User user)
+    public async Task<DataAccess.Models.MoneyRecord?> GetMoneyRecord(int id)
     {
-        throw new NotImplementedException();
+        var moneyRecord = await _unitOfWork.MoneyRecords.Get(x => x.Id == id);
+        return moneyRecord;
     }
 }

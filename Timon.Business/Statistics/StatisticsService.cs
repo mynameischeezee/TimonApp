@@ -20,13 +20,17 @@ public class StatisticsService : IStatisticsService<DataAccess.Models.User>
         _moneyRecordService = moneyRecordService;
     }
 
-    public Task<IEnumerable<int>> GenerateMoneyRecordsStatistics(DataAccess.Models.User user, DateTime from, DateTime to)
+    public async Task<IEnumerable<int>> GenerateMoneyRecordsStatistics(DataAccess.Models.User user, DateTime from, DateTime to)
     {
-        throw new NotImplementedException();
+        var moneyRecords = await _moneyRecordService.GetAllUsersMoneyRecords(user);
+        var filteredMoneyRecords = moneyRecords.Where(x => x.Date >= from && x.Date <= to).Select(y => y.Amount);
+        return filteredMoneyRecords;
     }
 
-    public Task<IEnumerable<int>> GenerateTimeRecordsStatistics(DataAccess.Models.User user, DateTime from, DateTime to)
+    public async Task<IEnumerable<TimeSpan>> GenerateTimeRecordsStatistics(DataAccess.Models.User user, DateTime from, DateTime to)
     {
-        throw new NotImplementedException();
+        var timeRecords = await _timeRecordService.GetAllUsersTimeRecords(user);
+        var filteredTimeRecords = timeRecords.Where(x => x.DateFrom >= from && x.DateTo <= to).Select(y => y.DateTo-y.DateFrom);
+        return filteredTimeRecords;
     }
 }

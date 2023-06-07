@@ -6,5 +6,5 @@ public interface IUserService<TUser> where TUser : class
     Task<TUser> DeleteUser(TUser record);
     Task <TUser> UpdateUser(TUser record);
     Task<IEnumerable<TUser>> GetAllUsers();
-    Task<TUser> GetUser(int id);
+    Task<TUser?> GetUser(int id);
 }

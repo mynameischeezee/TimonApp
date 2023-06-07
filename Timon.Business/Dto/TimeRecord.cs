@@ -13,8 +13,7 @@ namespace Timon.Business.Dto
         public DateTime UpdatedAt { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime TimeFrom { get; set; }
-        public DateTime TimeTo { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
     }
 }

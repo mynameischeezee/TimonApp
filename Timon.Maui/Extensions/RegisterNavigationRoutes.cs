@@ -10,7 +10,6 @@ namespace Timon.Maui.Extensions
     {
         public static void Register()
         {
-            Routing.RegisterRoute("Authentication/register", typeof(RegisterPage));
             Routing.RegisterRoute("Authentication/login", typeof(LoginPage));
             Routing.RegisterRoute("MoneyRecord/addMoneyRecord", typeof(AddMoneyRecordPage));
             Routing.RegisterRoute("MoneyRecord/editMoneyRecord", typeof(EditMoneyRecordPage));

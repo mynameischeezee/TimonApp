@@ -10,6 +10,6 @@ public interface IUnitOfWork : IDisposable
     IGenericRepository<TimeRecord> TimeRecords { get; }
     IGenericRepository<UserMoneyRecord> UserMoneyRecords { get; }
     IGenericRepository<UserTimeRecord> UserTimeRecords { get; }
-
+    IGenericRepository<Category> Categories { get; }
     Task Save();
 }

@@ -1,19 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Timon.Business.Auth0;
 
 namespace Timon.Maui.ViewModels.Main
 {
     public partial class ShellViewModel : ObservableObject
     {
-        public ShellViewModel()
+        private readonly Auth0Client _auth0Client;
+        public ShellViewModel(Auth0Client auth0Client)
         {
-
+            _auth0Client = auth0Client;
         }
 
         [RelayCommand]
         private async void SignOut()
         {
-            await Shell.Current.GoToAsync("Authentication/login");
+            var logoutResult = await _auth0Client.LogoutAsync();
+            if (!logoutResult.IsError)
+            {
+                await Shell.Current.GoToAsync("Authentication/login");
+            }
+            
         }
     }
 }

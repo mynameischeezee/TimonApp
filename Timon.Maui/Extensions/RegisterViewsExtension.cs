@@ -11,7 +11,6 @@ namespace Timon.Maui.Extensions
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
         {
             builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<RegisterPage>();
             builder.Services.AddSingleton<AddMoneyRecordPage>();
             builder.Services.AddSingleton<EditMoneyRecordPage>();
             builder.Services.AddSingleton<MoneyRecordsPage>();

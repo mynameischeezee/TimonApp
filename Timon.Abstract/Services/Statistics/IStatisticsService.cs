@@ -1,4 +1,4 @@
-﻿namespace Timon.Abstract.Statistics;
+﻿namespace Timon.Abstract.Services.Statistics;
 
 public interface IStatisticsService<TUser> where TUser : class
 {

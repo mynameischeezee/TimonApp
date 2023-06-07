@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Timon.Abstract.User;
+using Timon.Abstract.Services.User;
 using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.Settings

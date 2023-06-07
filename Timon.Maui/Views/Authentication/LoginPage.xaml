@@ -6,20 +6,8 @@
              Shell.FlyoutItemIsVisible="False"
              Shell.TabBarIsVisible="False">
     <VerticalStackLayout  VerticalOptions="CenterAndExpand" WidthRequest="300">
-        <Image Source="{AppThemeBinding Light=logo_light.svg, Dark=logo_dark.svg}" Margin="40" VerticalOptions="Center" HorizontalOptions="Center"></Image>
-        <Label Text="Login" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
-
-        <Entry Placeholder="Username" Text="{Binding Username}"/>
-        <Entry Placeholder="Password" IsPassword="True" Text="{Binding Password}" />
-
-        <Button Text="Login" Command="{Binding LoginCommand}" IsEnabled="{Binding CanLogin}" HorizontalOptions="FillAndExpand" Margin="0,20,0,0"/>
-        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" Margin="0,10,0,0">
-            <Label Text="Don't have an account yet?" TextColor="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray100}}" />
-            <Label Text="Sign Up" TextColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Cyan300Accent}}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
+        <Label x:Name="WelcomeLbl" FontSize="24"  FontFamily="OpenSansItalic" HorizontalTextAlignment="Center" Text="Welcome! Explore wonderful world of money and budget tracking with:"></Label>
+        <Image x:Name="LogoImg" Source="{AppThemeBinding Light=logo_light.svg, Dark=logo_dark.svg}" Margin="40" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+        <Button x:Name="BtnLogin" Text="Start your journey." Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand"/>
     </VerticalStackLayout>
 </ContentPage>

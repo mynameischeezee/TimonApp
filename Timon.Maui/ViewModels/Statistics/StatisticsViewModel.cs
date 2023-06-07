@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Timon.Abstract.Statistics;
+using Timon.Abstract.Services.Statistics;
 using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.Statistics

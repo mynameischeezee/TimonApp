@@ -18,7 +18,6 @@ namespace Timon.Maui.Extensions
         {
             builder.Services.AddSingleton<ShellViewModel>();
             builder.Services.AddSingleton<LoginViewModel>();
-            builder.Services.AddSingleton<RegisterViewModel>();
             builder.Services.AddSingleton<AddMoneyRecordViewModel>();
             builder.Services.AddSingleton<EditMoneyRecordViewModel>();
             builder.Services.AddSingleton<MoneyRecordsViewModel>();

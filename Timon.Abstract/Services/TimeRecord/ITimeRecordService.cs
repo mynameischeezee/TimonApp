@@ -1,4 +1,4 @@
-﻿namespace Timon.Abstract.TimeRecord;
+﻿namespace Timon.Abstract.Services.TimeRecord;
 
 public interface ITimeRecordService<TRecord, in TUser>
     where TRecord : class

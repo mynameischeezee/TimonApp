@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Timon.Abstract.TimeRecord;
+using Timon.Abstract.Services.TimeRecord;
 using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.TimeRecord

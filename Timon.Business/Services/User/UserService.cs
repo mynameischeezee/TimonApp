@@ -1,7 +1,8 @@
-﻿using Timon.Abstract.User;
+﻿using Microsoft.Maui.ApplicationModel.Communication;
+using Timon.Abstract.Services.User;
 using Timon.DataAccess.UnitOfWork;
 
-namespace Timon.Business.User;
+namespace Timon.Business.Services.User;
 
 public class UserService : IUserService<DataAccess.Models.User>
 {
@@ -12,19 +13,12 @@ public class UserService : IUserService<DataAccess.Models.User>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<DataAccess.Models.User> CreateUser(string username, string email, string password)
+
+    public async Task<DataAccess.Models.User> CreateUser(DataAccess.Models.User record)
     {
-        var user = new DataAccess.Models.User()
-        {
-            UserName = username,
-            Email = email,
-            Password = password,
-            CreatedAt = DateTime.Now,
-            UpdatedAt = DateTime.Now
-        };
-        await _unitOfWork.Users.Insert(user);
+        await _unitOfWork.Users.Insert(record);
         await _unitOfWork.Save();
-        return user;
+        return record;
     }
 
     public async Task<DataAccess.Models.User> DeleteUser(DataAccess.Models.User record)

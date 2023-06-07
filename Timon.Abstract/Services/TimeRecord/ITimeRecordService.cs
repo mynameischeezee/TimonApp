@@ -8,5 +8,5 @@ public interface ITimeRecordService<TRecord, in TUser>
     Task<TRecord> DeleteTimeRecord(TRecord record);
     Task<TRecord> UpdateTimeRecord(TRecord record);
     Task<IEnumerable<TRecord>> GetAllUsersTimeRecords(TUser user);
-    Task<TRecord?> GetTimeRecord(TUser user);
+    Task<TRecord?> GetTimeRecord(int id);
 }

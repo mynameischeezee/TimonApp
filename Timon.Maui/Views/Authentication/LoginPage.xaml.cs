@@ -11,4 +11,10 @@ public partial class LoginPage : ContentPage
         this.BindingContext = loginViewModel;
     }
 
+    protected override void OnAppearing()
+    {
+        var lblAnimation = new Animation((value) => { WelcomeLbl.Opacity = value; }, 0, 1);
+        WelcomeLbl.Animate("Opacity", lblAnimation, length: 3000);
+        base.OnAppearing();
+    }
 }

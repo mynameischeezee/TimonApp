@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Timon.Abstract.MoneyRecord;
+using Timon.Abstract.Services.MoneyRecord;
 using Timon.DataAccess.Models;
 
 namespace Timon.Maui.ViewModels.MoneyRecord

@@ -15,6 +15,8 @@ public class TimeRecordService : ITimeRecordService<DataAccess.Models.TimeRecord
 
     public async Task<DataAccess.Models.TimeRecord> CreateTimeRecord(DataAccess.Models.User user, DataAccess.Models.TimeRecord record)
     {
+        record.CreatedAt = DateTime.Now;
+        record.UpdatedAt = DateTime.Now;
         await _unitOfWork.TimeRecords.Insert(record);
         var userTimeRecord = new UserTimeRecord()
         {

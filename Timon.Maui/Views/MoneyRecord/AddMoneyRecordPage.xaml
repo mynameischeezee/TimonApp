@@ -8,11 +8,16 @@
 
         <Entry Placeholder="Name" Text="{Binding Name}"/>
         <Entry Placeholder="Description" Text="{Binding Description}"/>
+        <HorizontalStackLayout>
+            <Picker ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}"></Picker>
+            <Button WidthRequest="30" HeightRequest="30" Text="+" Command="{Binding NavigateToCategoryCreationCommand}"></Button>
+        </HorizontalStackLayout>
         <VerticalStackLayout Spacing="-10">
             <Label Text="Date" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <DatePicker Date="{Binding SelectedDate}"></DatePicker>
         </VerticalStackLayout>
         <Entry Placeholder="Amount UAH" Keyboard="Numeric" Text="{Binding Amount}"/>
         <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
+        <Button Text="Get last transaction from bank" Command="{Binding GetLastTransactionFromBankCommand}" HorizontalOptions="FillAndExpand" Margin="20"/>
     </VerticalStackLayout>
 </ContentPage>

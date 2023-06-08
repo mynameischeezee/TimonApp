@@ -16,6 +16,8 @@ public class UserService : IUserService<DataAccess.Models.User>
 
     public async Task<DataAccess.Models.User> CreateUser(DataAccess.Models.User record)
     {
+        record.CreatedAt = DateTime.Now;
+        record.UpdatedAt = DateTime.Now;
         await _unitOfWork.Users.Insert(record);
         await _unitOfWork.Save();
         return record;

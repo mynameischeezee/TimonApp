@@ -34,6 +34,8 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
 
     public async Task<DataAccess.Models.MoneyRecord> CreateMoneyRecord(DataAccess.Models.User user, DataAccess.Models.MoneyRecord record)
     {
+        record.CreatedAt = DateTime.Now;
+        record.UpdatedAt = DateTime.Now;
         await _unitOfWork.MoneyRecords.Insert(record);
         var userMoneyRecord = new UserMoneyRecord()
         {

@@ -30,6 +30,7 @@ namespace Timon.Maui.Extensions
             builder.Services.AddTransient<ITimeRecordService<TimeRecord, User>, TimeRecordService>();
             builder.Services.AddTransient<IStatisticsService<User>, StatisticsService>();
             builder.Services.AddTransient<ICategoryService<Category, User>, CategoryService>();
+            builder.Services.AddAutoMapper(typeof(MapConfiguration));
             builder.Services.AddMonoApi("u9gPDp_bhAXMR6Jsk2IFISgzoVq4VtweErqFxW-GM3TY");
             builder.Services.AddSingleton(new Auth0Client(new()
             {

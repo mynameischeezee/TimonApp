@@ -16,6 +16,8 @@ public class CategoryService : ICategoryService<DataAccess.Models.Category, Data
 
     public async Task<DataAccess.Models.Category> CreateCategory(DataAccess.Models.Category record)
     {
+        record.CreatedAt = DateTime.Now;
+        record.UpdatedAt = DateTime.Now;
         await _unitOfWork.Categories.Insert(record);
         await _unitOfWork.Save();
         return record;

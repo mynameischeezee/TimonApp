@@ -50,4 +50,10 @@ public class UserService : IUserService<DataAccess.Models.User>
         var currentUser = user.ToList().FirstOrDefault(x => x.Id == id);
         return currentUser;
     }
+
+    public async Task<DataAccess.Models.User?> GetUserByNickname(string nickName)
+    {
+        var user = await _unitOfWork.Users.Get(x => x.UserName.Equals(nickName));
+        return user;
+    }
 }

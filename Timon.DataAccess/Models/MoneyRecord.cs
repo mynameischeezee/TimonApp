@@ -1,4 +1,5 @@
 ﻿using Timon.Abstract.DataAccess;
+using Timon.DataAccess.Data;
 
 namespace Timon.DataAccess.Models
 {
@@ -9,5 +10,6 @@ namespace Timon.DataAccess.Models
         public int Amount { get; set; }
         public DateTime Date { get; set; }
         public Category? Category { get; set; }
+        public MoneyRecordType Type { get; set; }
     }
 }

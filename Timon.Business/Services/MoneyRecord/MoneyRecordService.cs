@@ -18,8 +18,10 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
 
     public async Task<DataAccess.Models.MoneyRecord> GetLastTransactionFromBank(DataAccess.Models.User user)
     {
-        var monoTimeRecordsCollection = await _connector.ReturnStatementAsync(DateTime.Now, DateTime.Now - TimeSpan.FromHours(1));
-        var lastMonoTransaction = monoTimeRecordsCollection.Last();
+        //see: "https://api.monobank.ua/docs/"
+        const string defaultAcc = "0";
+        var monoTimeRecordsCollection = await _connector.ReturnStatementAsync(DateTime.Now - TimeSpan.FromDays(1), DateTime.Now, defaultAcc);
+        var lastMonoTransaction = monoTimeRecordsCollection.First();
         var moneyRecord = new DataAccess.Models.MoneyRecord()
         {
             Name = "",

@@ -31,4 +31,8 @@
       <ProjectReference Include="..\Timon.Exceptions\Timon.Exceptions.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\" />
+    </ItemGroup>
+
 </Project>

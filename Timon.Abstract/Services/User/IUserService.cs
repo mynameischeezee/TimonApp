@@ -7,4 +7,5 @@ public interface IUserService<TUser> where TUser : class
     Task<TUser> UpdateUser(TUser record);
     Task<IEnumerable<TUser>> GetAllUsers();
     Task<TUser?> GetUser(int id);
+    Task<TUser?> GetUserByNickname(string nickName);
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Timon.Abstract.DataAccess.Repository;
-using Timon.DataAccess.Data;
+using Timon.DataAccess.Context;
 
 namespace Timon.DataAccess.Repository
 {

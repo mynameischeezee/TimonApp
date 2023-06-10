@@ -1,4 +1,6 @@
-﻿namespace Timon.Business.Dto;
+﻿using Timon.DataAccess.Data;
+
+namespace Timon.Business.Dto;
 
 public class MoneyRecord
 {
@@ -9,4 +11,5 @@ public class MoneyRecord
     public string? Description { get; set; }
     public int Amount { get; set; }
     public DateTime Date { get; set; }
+    public MoneyRecordType Type { get; set; }
 }

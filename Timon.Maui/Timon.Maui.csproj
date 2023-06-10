@@ -63,6 +63,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Platforms\MacCatalyst\DangerousTrustProvider.cs">
+        <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+      </Compile>
+      <Compile Update="Platforms\Tizen\DangerousTrustProvider.cs">
+        <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+      </Compile>
+      <Compile Update="Platforms\Windows\DangerousTrustProvider.cs">
+        <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
       <MauiXaml Update="Views\Authentication\LoginPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

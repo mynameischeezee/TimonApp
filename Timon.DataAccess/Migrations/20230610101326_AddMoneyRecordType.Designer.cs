@@ -12,8 +12,8 @@ using Timon.DataAccess.Context;
 namespace Timon.DataAccess.Migrations
 {
     [DbContext(typeof(TimonDbContext))]
-    [Migration("20230608123629_Initial")]
-    partial class Initial
+    [Migration("20230610101326_AddMoneyRecordType")]
+    partial class AddMoneyRecordType
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,6 +83,9 @@ namespace Timon.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -140,10 +143,6 @@ namespace Timon.DataAccess.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MonoBankApiKey")
                         .HasColumnType("nvarchar(max)");

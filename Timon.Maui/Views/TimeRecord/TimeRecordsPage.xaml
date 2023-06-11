@@ -3,5 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.TimeRecord.TimeRecordsPage"
              xmlns:timeRecordViewModels="clr-namespace:Timon.Maui.ViewModels.TimeRecord">
-    
+    <StackLayout>
+        <ListView ItemsSource="{Binding TimeRecords}" RowHeight="80">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <HorizontalStackLayout VerticalOptions="Center">
+                                <StackLayout WidthRequest="140">
+                                    <Label Margin="10" FontFamily="OpenSansMedium" Text="{Binding Name}" FontSize="18" />
+                                    <Label Margin="10,-13,0,0" FontFamily="OpenSansLightItalic" Text="{Binding Description}" FontSize="12" />
+                                </StackLayout>
+                                <StackLayout Margin="10">
+                                    <HorizontalStackLayout VerticalOptions="Center">
+                                        <Label Text="From: "></Label>
+                                        <Label FontFamily="OpenSansRegularItalic" Text="{Binding DateFrom, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm'}" />
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout VerticalOptions="Center">
+                                        <Label Text="To: "></Label>
+                                        <Label FontFamily="OpenSansRegularItalic" Text="{Binding DateTo, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm'}" />
+                                    </HorizontalStackLayout>
+                                    <Label FontFamily="OpenSansLightItalic" Text="{Binding Date}" FontSize="15" />
+                                </StackLayout>
+                                <Button ImageSource="{AppThemeBinding Dark=pencil_dark.png Light=pencil_light.png}"
+                                        ContentLayout="Top,0"  Margin="10"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.NavigateToDetailsCommand}"
+                                        CommandParameter="{Binding Id}"></Button>
+                            </HorizontalStackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button HorizontalOptions="Center" VerticalOptions="End" Text="Add new record " WidthRequest="300" Margin="40"
+                Command="{Binding AddNewTimeRecordCommand}">
+        </Button>
+    </StackLayout>
 </ContentPage>

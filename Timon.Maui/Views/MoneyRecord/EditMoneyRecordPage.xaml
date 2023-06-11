@@ -3,17 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.MoneyRecord.EditMoneyRecordPage"
              xmlns:moneyRecordViewModels="clr-namespace:Timon.Maui.ViewModels.MoneyRecord">
-
     <VerticalStackLayout  VerticalOptions="CenterAndExpand" WidthRequest="300" Spacing="10">
-        <Label Text="Add new money record" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
-
+        <Label Text="Edit money record" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
         <Entry Placeholder="Name" Text="{Binding Name}"/>
         <Entry Placeholder="Description" Text="{Binding Description}"/>
+        <HorizontalStackLayout>
+            <Picker WidthRequest="240" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}"  Title="Category" SelectedItem="{Binding SelectedCategory}" />
+            <Button  Text="New" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NavigateToCategoryCreationCommand}"></Button>
+        </HorizontalStackLayout>
         <VerticalStackLayout Spacing="-10">
             <Label Text="Date" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <DatePicker Date="{Binding SelectedDate}"></DatePicker>
         </VerticalStackLayout>
-        <Entry Placeholder="Amount UAH" Keyboard="Numeric" Text="{Binding Amount}"/>
-        <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
+        <VerticalStackLayout Spacing="-10">
+            <Label Text="Amount" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
+            <Entry Placeholder="Amount UAH" Keyboard="Numeric" Text="{Binding Amount}"/>
+        </VerticalStackLayout>
+            <HorizontalStackLayout>
+            <Button Text="Save" Command="{Binding SaveMoneyRecordCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
+            <Button Text="Delete" Command="{Binding DeleteMoneyRecordCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

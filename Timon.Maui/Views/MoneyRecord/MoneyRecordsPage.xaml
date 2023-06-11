@@ -3,5 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.MoneyRecord.MoneyRecordsPage"
              xmlns:moneyRecordViewModels="clr-namespace:Timon.Maui.ViewModels.MoneyRecord">
-
+    <StackLayout>
+        <ListView ItemsSource="{Binding MoneyRecords}" RowHeight="80">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <HorizontalStackLayout VerticalOptions="Center">
+                                <StackLayout WidthRequest="140">
+                                    <Label Margin="10" FontFamily="OpenSansMedium" Text="{Binding Name}" FontSize="22" />
+                                    <Label Margin="10,-13,0,0" FontFamily="OpenSansLightItalic" Text="{Binding Description}" FontSize="17" />
+                                </StackLayout>
+                                <StackLayout Margin="15">
+                                    <HorizontalStackLayout VerticalOptions="Center">
+                                        <Label Text="Amount: "></Label>
+                                        <Label FontFamily="OpenSansRegularItalic" Text="{Binding Amount}" />
+                                    </HorizontalStackLayout>
+                                    <Label FontFamily="OpenSansLightItalic" FontSize="15" Text="{Binding Date, StringFormat='{}{0:MM/dd/yyyy'}" />
+                                </StackLayout>
+                                <Button ImageSource="{AppThemeBinding Dark=pencil_dark.png Light=pencil_light.png}" ContentLayout="Top,0"  Margin="10" Text="" WidthRequest="40" HeightRequest="40"  Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.NavigateToDetailsCommand}" CommandParameter="{Binding Id}"></Button>
+                            </HorizontalStackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button HorizontalOptions="Center" VerticalOptions="End" Text="Add new record " WidthRequest="300" Margin="40"
+                Command="{Binding AddNewMoneyRecordCommand}">
+        </Button>
+    </StackLayout>
 </ContentPage>

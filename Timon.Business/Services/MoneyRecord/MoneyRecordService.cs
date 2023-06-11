@@ -26,11 +26,12 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
         {
             Name = "",
             Description = lastMonoTransaction.Description,
-            Amount = (int)lastMonoTransaction.Amount,
+            Amount = ((int)lastMonoTransaction.Amount / 100),
+            Date = DateTime.Now,
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now
         };
-        return await CreateMoneyRecord(user, moneyRecord);
+        return moneyRecord;
 
     }
 
@@ -39,10 +40,11 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
         record.CreatedAt = DateTime.Now;
         record.UpdatedAt = DateTime.Now;
         await _unitOfWork.MoneyRecords.Insert(record);
+        await _unitOfWork.Save();
         var userMoneyRecord = new UserMoneyRecord()
         {
-            User = user,
-            MoneyRecord = record,
+            UserId = user.Id,
+            MoneyRecordId = record.Id,
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now
         };
@@ -71,7 +73,9 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
     public async Task<IEnumerable<DataAccess.Models.MoneyRecord>> GetAllUsersMoneyRecords(DataAccess.Models.User user)
     {
         var userMoneyRecords = await _unitOfWork.UserMoneyRecords.GetAll(x => x.User.Id == user.Id);
-        return userMoneyRecords.ToList().Select(x => x.MoneyRecord);
+        var userMoneyRecordsId = userMoneyRecords.Select(x => x.MoneyRecordId);
+        var moneyRecords = await _unitOfWork.MoneyRecords.GetAll(x => userMoneyRecordsId.Contains(x.Id));
+        return moneyRecords.ToList();
     }
 
     public async Task<DataAccess.Models.MoneyRecord?> GetMoneyRecord(int id)

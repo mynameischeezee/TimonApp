@@ -1,4 +1,5 @@
 ﻿using Timon.Maui.Views.Authentication;
+using Timon.Maui.Views.Categories;
 using Timon.Maui.Views.MoneyRecord;
 using Timon.Maui.Views.Settings;
 using Timon.Maui.Views.Statistics;
@@ -20,6 +21,7 @@ namespace Timon.Maui.Extensions
             Routing.RegisterRoute("TimeRecord/addTimeRecord", typeof(AddTimeRecordPage));
             Routing.RegisterRoute("TimeRecord/editTimeRecord", typeof(EditTimeRecordPage));
             Routing.RegisterRoute("TimeRecord/timeRecords", typeof(TimeRecordsPage));
+            Routing.RegisterRoute("Categories/addCategory", typeof(AddCategoryPage));
         }
 
     }

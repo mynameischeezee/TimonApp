@@ -11,9 +11,10 @@ using Timon.Business.Services.MoneyRecord;
 using Timon.Business.Services.Statistics;
 using Timon.Business.Services.TimeRecord;
 using Timon.Business.Services.User;
-using Timon.DataAccess.Data;
+using Timon.DataAccess.Context;
 using Timon.DataAccess.Models;
 using Timon.DataAccess.UnitOfWork;
+using Timon.Maui.Properties;
 
 namespace Timon.Maui.Extensions
 {
@@ -22,8 +23,8 @@ namespace Timon.Maui.Extensions
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder builder)
         {
             //TODO: remove sensitive info https://luminousmen.com/post/delete-sensitive-data-from-git/
-            builder.Services.AddDbContext<TimonDbContext>(options => 
-                { options.UseSqlServer("Server=localhost,1433;Database=TimonDatabase;User Id=sa;Password=!23jJ0=L3;Encrypt=False;");});
+            builder.Services.AddDbContext<TimonDbContext>(options =>
+                { options.UseSqlServer("Server=10.0.2.2,1433;Database=TimonDatabase;User Id=sa;Password=!23jJ0=L3;Persist Security Info=True;TrustServerCertificate=True;MultipleActiveResultSets=true"); });
             builder.Services.AddSingleton<IUnitOfWork, UnitOfWork>();
             builder.Services.AddTransient<IUserService<User>, UserService>();
             builder.Services.AddTransient<IMoneyRecordService<MoneyRecord, User>, MoneyRecordService>();

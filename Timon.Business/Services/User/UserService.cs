@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.ApplicationModel.Communication;
-using Timon.Abstract.Services.User;
+﻿using Timon.Abstract.Services.User;
 using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Business.Services.User;
@@ -12,7 +11,6 @@ public class UserService : IUserService<DataAccess.Models.User>
     {
         _unitOfWork = unitOfWork;
     }
-
 
     public async Task<DataAccess.Models.User> CreateUser(DataAccess.Models.User record)
     {

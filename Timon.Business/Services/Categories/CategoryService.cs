@@ -1,6 +1,4 @@
 ﻿using Timon.Abstract.Services.Categories;
-using Timon.Business.Dto;
-using Timon.DataAccess.Models;
 using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Business.Services.Categories;
@@ -14,18 +12,18 @@ public class CategoryService : ICategoryService<DataAccess.Models.Category, Data
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<DataAccess.Models.Category> CreateCategory(DataAccess.Models.Category record)
+    public async Task<DataAccess.Models.Category> CreateCategory(DataAccess.Models.User user, DataAccess.Models.Category record)
     {
         record.CreatedAt = DateTime.Now;
         record.UpdatedAt = DateTime.Now;
-        await _unitOfWork.Categories.Insert(record);
+        await _unitOfWork.Category.Insert(record);
         await _unitOfWork.Save();
         return record;
     }
 
     public async Task<DataAccess.Models.Category> DeleteCategory(DataAccess.Models.Category record)
     {
-        await _unitOfWork.Categories.Delete(record.Id);
+        await _unitOfWork.Category.Delete(record.Id);
         await _unitOfWork.Save();
         return record;
     }
@@ -33,20 +31,22 @@ public class CategoryService : ICategoryService<DataAccess.Models.Category, Data
     public async Task<DataAccess.Models.Category> UpdateCategory(DataAccess.Models.Category record)
     {
         record.UpdatedAt = DateTime.Now;
-        _unitOfWork.Categories.Update(record);
+        _unitOfWork.Category.Update(record);
         await _unitOfWork.Save();
         return record;
     }
 
     public async Task<IEnumerable<DataAccess.Models.Category>> GetAllUsersCategories(DataAccess.Models.User user)
     {
-        var categories = await _unitOfWork.Categories.GetAll(x => x.User != null && x.User.Id == user.Id);
-        return categories;
+        var userCategories = await _unitOfWork.Category.GetAll(x => x.UserId == user.Id);
+        var userCategoriesId = userCategories.Select(x => x.Id);
+        var categories = await _unitOfWork.Category.GetAll(x => userCategoriesId.Contains(x.Id));
+        return categories.ToList();
     }
 
     public async Task<DataAccess.Models.Category> GetCategory(int id)
     {
-        var category = await _unitOfWork.Categories.Get(x => x.Id == id);
+        var category = await _unitOfWork.Category.Get(x => x.Id == id);
         return category;
     }
 }

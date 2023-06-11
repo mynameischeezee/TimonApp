@@ -3,5 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.Settings.ProfilePage"
              xmlns:settingsViewModel="clr-namespace:Timon.Maui.ViewModels.Settings">
-    
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Border WidthRequest="80" HeightRequest="80">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="30" />
+                </Border.StrokeShape>
+                <Image
+                    x:Name="UserPictureImg"
+                    SemanticProperties.Description="User's picture"
+                    Source="{Binding UserPicture}"
+                    Aspect="AspectFill"></Image>
+            </Border>
+            <VerticalStackLayout Margin="20">
+                <Label  VerticalOptions="Center"
+                        Text="{Binding UserName}"
+                        FontSize="36"/>
+                <HorizontalStackLayout>
+                    <Label Text="Joined: "></Label>
+                    <Label Text="{Binding UserJoinedDate}"></Label>
+                </HorizontalStackLayout>
+                
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <VerticalStackLayout WidthRequest="300">
+            <Entry IsEnabled="False" Placeholder="Monobank api key" Text="{Binding MonobankApiKey}"></Entry>
+            <Label Text="Need for having access to your Monobank transactions. See more here: https://api.monobank.ua/" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"></Label>
+        </VerticalStackLayout>
+        <StackLayout Margin="20">
+            <Button Text="Save" Command="{Binding SaveProfileCommand}" />
+        </StackLayout>
+        <StackLayout Margin="20">
+            <Button Text="Sign out" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+    </VerticalStackLayout>
 </ContentPage>

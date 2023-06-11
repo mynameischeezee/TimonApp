@@ -5,9 +5,12 @@
              xmlns:timeRecordViewModels="clr-namespace:Timon.Maui.ViewModels.TimeRecord">
     <VerticalStackLayout  VerticalOptions="CenterAndExpand" WidthRequest="250" Spacing="5">
         <Label Text="Add new time record" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
-
         <Entry Placeholder="Name" Text="{Binding Name}"/>
         <Entry Placeholder="Description" Text="{Binding Description}"/>
+        <HorizontalStackLayout>
+            <Picker WidthRequest="220" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}"  Title="Category"  SelectedItem="{Binding SelectedCategory}"></Picker>
+            <Button  Text="New" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NavigateToNewCategoryCreationCommand}"></Button>
+        </HorizontalStackLayout>
         <VerticalStackLayout Spacing="-10">
             <Label Text="Date" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <DatePicker Date="{Binding SelectedDate}"></DatePicker>
@@ -20,8 +23,6 @@
             <Label Text="To" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <TimePicker Time="{Binding TimeTo}"></TimePicker>
         </VerticalStackLayout>
-
-        <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
+        <Button Text="Save" Command="{Binding SaveTimeRecordCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
     </VerticalStackLayout>
-    
 </ContentPage>

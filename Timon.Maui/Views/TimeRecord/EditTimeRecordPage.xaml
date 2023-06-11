@@ -6,9 +6,12 @@
 
     <VerticalStackLayout  VerticalOptions="CenterAndExpand" WidthRequest="250" Spacing="5">
         <Label Text="Edit time record" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
-
         <Entry Placeholder="Name" Text="{Binding Name}"/>
         <Entry Placeholder="Description" Text="{Binding Description}"/>
+        <HorizontalStackLayout>
+            <Picker WidthRequest="190" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Name}"  Title="Category" SelectedItem="{Binding SelectedCategory}" />
+            <Button Text="New" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding NavigateToCategoryCreationCommand}"></Button>
+        </HorizontalStackLayout>
         <VerticalStackLayout Spacing="-10">
             <Label Text="Date" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <DatePicker Date="{Binding SelectedDate}"></DatePicker>
@@ -21,8 +24,9 @@
             <Label Text="To" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <TimePicker Time="{Binding TimeTo}"></TimePicker>
         </VerticalStackLayout>
-
-        <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="50" Margin="10">
+            <Button Text="Save" Command="{Binding SaveTimeRecordCommand}" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Delete" Command="{Binding DeleteTimeRecordCommand}" HorizontalOptions="FillAndExpand"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
-    
 </ContentPage>

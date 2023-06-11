@@ -4,7 +4,7 @@ public interface ICategoryService<TCategory, in TUser>
     where TCategory : class
     where TUser : class
 {
-    Task<TCategory> CreateCategory(TCategory record);
+    Task<TCategory> CreateCategory(TUser user, TCategory record);
     Task<TCategory> DeleteCategory(TCategory record);
     Task<TCategory> UpdateCategory(TCategory record);
     Task<IEnumerable<TCategory>> GetAllUsersCategories(TUser user);

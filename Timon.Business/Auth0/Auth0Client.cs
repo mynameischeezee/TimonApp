@@ -6,11 +6,11 @@ namespace Timon.Business.Auth0;
 
 public class Auth0Client
 {
-    private readonly OidcClient _oidcClient;
+    private readonly OidcClient _oIdcClient;
 
     public Auth0Client(Auth0ClientOptions options)
     {
-        _oidcClient = new OidcClient(new OidcClientOptions
+        _oIdcClient = new OidcClient(new OidcClientOptions
         {
             Authority = $"https://{options.Domain}",
             ClientId = options.ClientId,
@@ -22,33 +22,33 @@ public class Auth0Client
 
     public IdentityModel.OidcClient.Browser.IBrowser Browser
     {
-        get => _oidcClient.Options.Browser;
-        set => _oidcClient.Options.Browser = value;
+        get => _oIdcClient.Options.Browser;
+        set => _oIdcClient.Options.Browser = value;
     }
 
     public async Task<LoginResult> LoginAsync()
     {
-        return await _oidcClient.LoginAsync();
+        return await _oIdcClient.LoginAsync();
     }
 
     public async Task<BrowserResult> LogoutAsync()
     {
         var logoutParameters = new Dictionary<string, string>
         {
-            {"client_id", _oidcClient.Options.ClientId },
-            {"returnTo", _oidcClient.Options.RedirectUri }
+            {"client_id", _oIdcClient.Options.ClientId },
+            {"returnTo", _oIdcClient.Options.RedirectUri }
         };
 
         var logoutRequest = new LogoutRequest();
-        var endSessionUrl = new RequestUrl($"{_oidcClient.Options.Authority}/v2/logout")
+        var endSessionUrl = new RequestUrl($"{_oIdcClient.Options.Authority}/v2/logout")
             .Create(new Parameters(logoutParameters));
-        var browserOptions = new BrowserOptions(endSessionUrl, _oidcClient.Options.RedirectUri)
+        var browserOptions = new BrowserOptions(endSessionUrl, _oIdcClient.Options.RedirectUri)
         {
             Timeout = TimeSpan.FromSeconds(logoutRequest.BrowserTimeout),
             DisplayMode = logoutRequest.BrowserDisplayMode
         };
 
-        var browserResult = await _oidcClient.Options.Browser.InvokeAsync(browserOptions);
+        var browserResult = await _oIdcClient.Options.Browser.InvokeAsync(browserOptions);
 
         return browserResult;
     }

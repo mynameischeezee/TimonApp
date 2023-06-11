@@ -1,5 +1,4 @@
 ﻿using Timon.Abstract.Services.TimeRecord;
-using Timon.DataAccess.Models;
 using Timon.DataAccess.UnitOfWork;
 
 namespace Timon.Business.Services.TimeRecord;
@@ -18,10 +17,11 @@ public class TimeRecordService : ITimeRecordService<DataAccess.Models.TimeRecord
         record.CreatedAt = DateTime.Now;
         record.UpdatedAt = DateTime.Now;
         await _unitOfWork.TimeRecords.Insert(record);
-        var userTimeRecord = new UserTimeRecord()
+        await _unitOfWork.Save();
+        var userTimeRecord = new DataAccess.Models.UserTimeRecord()
         {
-            User = user,
-            TimeRecord = record,
+            UserId = user.Id,
+            TimeRecordId = record.Id,
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now
         };
@@ -49,8 +49,10 @@ public class TimeRecordService : ITimeRecordService<DataAccess.Models.TimeRecord
 
     public async Task<IEnumerable<DataAccess.Models.TimeRecord>> GetAllUsersTimeRecords(DataAccess.Models.User user)
     {
-        var userTimeRecords = await _unitOfWork.UserTimeRecords.GetAll(x => x.User.Id == user.Id);
-        return userTimeRecords.ToList().Select(x => x.TimeRecord);
+        var userTimeRecords = (await _unitOfWork.UserTimeRecords.GetAll(x => x.User.Id == user.Id)).ToList();
+        var userTimeRecordsId = userTimeRecords.Select(x => x.TimeRecordId);
+        var timeRecords = (await _unitOfWork.TimeRecords.GetAll(x => userTimeRecordsId.Contains(x.Id))).ToList();
+        return timeRecords.ToList();
     }
 
     public async Task<DataAccess.Models.TimeRecord?> GetTimeRecord(int id)

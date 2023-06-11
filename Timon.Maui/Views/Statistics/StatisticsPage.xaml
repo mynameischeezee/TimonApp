@@ -2,7 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Timon.Maui.Views.Statistics.StatisticsPage"
-             xmlns:statisticsViewModels="clr-namespace:Timon.Maui.ViewModels.Statistics">
-    
-    
+             xmlns:statisticsViewModels="clr-namespace:Timon.Maui.ViewModels.Statistics"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui">
+    <lvc:PieChart
+            LegendPosition="Left"
+            Series="{Binding Series}"
+            WidthRequest="300"
+            InitialRotation="-90"
+            Total="100"
+            TooltipTextSize="52"
+            LegendTextSize="52"
+            MaxAngle="285">
+        </lvc:PieChart>
 </ContentPage>

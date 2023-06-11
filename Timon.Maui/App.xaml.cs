@@ -1,12 +1,22 @@
-﻿using Timon.Business.Auth0;
+﻿using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using Timon.Maui.ViewModels.Authentication;
+using Timon.Maui.Views.Authentication;
 
 namespace Timon.Maui;
 
 public partial class App : Application
 {
-    public App(Auth0Client auth0Client)
+    public App(LoginViewModel loginViewModel)
     {
         InitializeComponent();
-        MainPage = new AppShell(auth0Client);
+        MainPage = new LoginPage(loginViewModel);
+
+        LiveCharts.Configure(config =>
+            config
+                .AddSkiaSharp()
+                .AddDefaultMappers()
+                .AddDarkTheme()
+                .AddLightTheme());
     }
 }

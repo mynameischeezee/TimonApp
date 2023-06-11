@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Timon.Maui.ViewModels.Authentication;
+﻿using Timon.Maui.ViewModels.Authentication;
+using Timon.Maui.ViewModels.Categories;
 using Timon.Maui.ViewModels.Main;
 using Timon.Maui.ViewModels.MoneyRecord;
 using Timon.Maui.ViewModels.Settings;
@@ -27,6 +23,7 @@ namespace Timon.Maui.Extensions
             builder.Services.AddSingleton<EditTimeRecordViewModel>();
             builder.Services.AddSingleton<TimeRecordsViewModel>();
             builder.Services.AddSingleton<StatisticsViewModel>();
+            builder.Services.AddSingleton<AddCategoryViewModel>();
 
             return builder;
         }

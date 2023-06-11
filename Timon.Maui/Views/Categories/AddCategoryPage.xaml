@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Timon.Maui.Views.Categories.AddCategoryPage">
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="Add new category" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
+        <Entry WidthRequest="300"  Placeholder="Name" Text="{Binding CategoryName}"/>
+        <StackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Category priority: " HorizontalTextAlignment="Center" Margin="3,0,0,0"/>
+                <Label Text="{Binding CategoryPriority}"></Label>
+            </HorizontalStackLayout>
+            <Slider Minimum ="-10" Maximum="10" Value="{Binding CategoryPriority}" Margin="10"/>
+        </StackLayout>
+        <Button Text="Save" Command="{Binding SaveCategoryCommand}"></Button>
+    </VerticalStackLayout>
+</ContentPage>

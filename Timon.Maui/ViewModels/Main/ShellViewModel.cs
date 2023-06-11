@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Timon.Business.Auth0;
+using Timon.Maui.Properties;
 
 namespace Timon.Maui.ViewModels.Main
 {
@@ -16,11 +17,9 @@ namespace Timon.Maui.ViewModels.Main
         private async void SignOut()
         {
             var logoutResult = await _auth0Client.LogoutAsync();
-            if (!logoutResult.IsError)
-            {
-                await Shell.Current.GoToAsync("Authentication/login");
-            }
-            
+            if (logoutResult.IsError) return;
+            CurrentSession.CurrentUserNickname = null;
+            await Shell.Current.GoToAsync("Authentication/login");
         }
     }
 }

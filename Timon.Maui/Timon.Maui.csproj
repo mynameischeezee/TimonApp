@@ -49,11 +49,13 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
         <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-beta.710" />
         <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+        <PackageReference Include="Plugin.LocalNotification" Version="10.1.5" />
     </ItemGroup>
 
     <ItemGroup>
@@ -72,10 +74,16 @@
       <Compile Update="Platforms\Windows\DangerousTrustProvider.cs">
         <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
       </Compile>
+      <Compile Update="Views\Categories\AddCategoryPage.xaml.cs">
+        <DependentUpon>AddCategoryPage.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
       <MauiXaml Update="Views\Authentication\LoginPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Categories\AddCategoryPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\MoneyRecord\AddMoneyRecordPage.xaml">
@@ -105,6 +113,10 @@
       <MauiXaml Update="Views\TimeRecord\TimeRecordsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ViewModels\Categories\" />
     </ItemGroup>
 
 </Project>

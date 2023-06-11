@@ -9,10 +9,6 @@
     xmlns:settingsViews="clr-namespace:Timon.Maui.Views.Settings"
     xmlns:statisticsViews="clr-namespace:Timon.Maui.Views.Statistics"
     xmlns:authentication="clr-namespace:Timon.Maui.Views.Authentication">
-    <ShellContent
-        Title="Login Page" FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate authentication:LoginPage}"
-        Route="LoginPage" />
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Money records"
                       Icon="{AppThemeBinding Light=money_dark.png, Dark=money_light.svg}"
@@ -30,7 +26,7 @@
     </FlyoutItem>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Profile"
-                      Icon="{AppThemeBinding Light=settings_dark.png, Dark=settings_light.svg}"
+                      Icon="{AppThemeBinding Light=profile_dark.png, Dark=settings_light.svg}"
                       ContentTemplate="{DataTemplate settingsViews:ProfilePage}" />
 
         <ShellContent Title="Settings"

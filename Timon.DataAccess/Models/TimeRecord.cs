@@ -1,4 +1,5 @@
-﻿using Timon.Abstract.DataAccess;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Timon.Abstract.DataAccess;
 
 namespace Timon.DataAccess.Models
 {
@@ -8,6 +9,9 @@ namespace Timon.DataAccess.Models
         public string? Description { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
-        public Category? Category { get; set; }
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
     }
 }

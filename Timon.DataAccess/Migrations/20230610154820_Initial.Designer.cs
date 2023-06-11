@@ -12,7 +12,7 @@ using Timon.DataAccess.Context;
 namespace Timon.DataAccess.Migrations
 {
     [DbContext(typeof(TimonDbContext))]
-    [Migration("20230608123629_Initial")]
+    [Migration("20230610154820_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace Timon.DataAccess.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -67,7 +67,7 @@ namespace Timon.DataAccess.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -82,6 +82,9 @@ namespace Timon.DataAccess.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -101,7 +104,7 @@ namespace Timon.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -140,10 +143,6 @@ namespace Timon.DataAccess.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MonoBankApiKey")
                         .HasColumnType("nvarchar(max)");
@@ -221,7 +220,9 @@ namespace Timon.DataAccess.Migrations
                 {
                     b.HasOne("Timon.DataAccess.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -230,7 +231,9 @@ namespace Timon.DataAccess.Migrations
                 {
                     b.HasOne("Timon.DataAccess.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
@@ -239,7 +242,9 @@ namespace Timon.DataAccess.Migrations
                 {
                     b.HasOne("Timon.DataAccess.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
@@ -255,7 +260,7 @@ namespace Timon.DataAccess.Migrations
                     b.HasOne("Timon.DataAccess.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("MoneyRecord");
@@ -274,7 +279,7 @@ namespace Timon.DataAccess.Migrations
                     b.HasOne("Timon.DataAccess.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("TimeRecord");

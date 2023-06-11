@@ -13,14 +13,14 @@ namespace Timon.DataAccess.UnitOfWork
         private IGenericRepository<TimeRecord> _timeRecords;
         private IGenericRepository<UserMoneyRecord> _userMoneyRecords;
         private IGenericRepository<UserTimeRecord> _userTimeRecords;
-        private IGenericRepository<Category> _categories;
+        private IGenericRepository<Category> _category;
 
         public IGenericRepository<User> Users => _users ??= new GenericRepository<User>(_context);
         public IGenericRepository<MoneyRecord> MoneyRecords => _moneyRecords ??= new GenericRepository<MoneyRecord>(_context);
         public IGenericRepository<TimeRecord> TimeRecords => _timeRecords ??= new GenericRepository<TimeRecord>(_context);
         public IGenericRepository<UserMoneyRecord> UserMoneyRecords => _userMoneyRecords ??= new GenericRepository<UserMoneyRecord>(_context);
         public IGenericRepository<UserTimeRecord> UserTimeRecords => _userTimeRecords ??= new GenericRepository<UserTimeRecord>(_context);
-        public IGenericRepository<Category> Categories => _categories ??= new GenericRepository<Category>(_context);
+        public IGenericRepository<Category> Category => _category ??= new GenericRepository<Category>(_context);
 
         public UnitOfWork(TimonDbContext context)
         {

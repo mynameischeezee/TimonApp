@@ -1,7 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.OS;
-using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace Timon.Maui;
 

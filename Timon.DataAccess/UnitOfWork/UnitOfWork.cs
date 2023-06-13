@@ -8,23 +8,28 @@ namespace Timon.DataAccess.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private readonly TimonDbContext _context;
-        private IGenericRepository<User> _users;
-        private IGenericRepository<MoneyRecord> _moneyRecords;
-        private IGenericRepository<TimeRecord> _timeRecords;
-        private IGenericRepository<UserMoneyRecord> _userMoneyRecords;
-        private IGenericRepository<UserTimeRecord> _userTimeRecords;
-        private IGenericRepository<Category> _category;
+        public IGenericRepository<User> Users { get; }
+        public IGenericRepository<MoneyRecord> MoneyRecords { get;  }
+        public IGenericRepository<TimeRecord> TimeRecords { get; }
+        public IGenericRepository<UserMoneyRecord> UserMoneyRecords { get; }
+        public IGenericRepository<UserTimeRecord> UserTimeRecords { get; }
+        public IGenericRepository<Category> Category { get; }
 
-        public IGenericRepository<User> Users => _users ??= new GenericRepository<User>(_context);
-        public IGenericRepository<MoneyRecord> MoneyRecords => _moneyRecords ??= new GenericRepository<MoneyRecord>(_context);
-        public IGenericRepository<TimeRecord> TimeRecords => _timeRecords ??= new GenericRepository<TimeRecord>(_context);
-        public IGenericRepository<UserMoneyRecord> UserMoneyRecords => _userMoneyRecords ??= new GenericRepository<UserMoneyRecord>(_context);
-        public IGenericRepository<UserTimeRecord> UserTimeRecords => _userTimeRecords ??= new GenericRepository<UserTimeRecord>(_context);
-        public IGenericRepository<Category> Category => _category ??= new GenericRepository<Category>(_context);
-
-        public UnitOfWork(TimonDbContext context)
+        public UnitOfWork(TimonDbContext context,
+            IGenericRepository<User> users, 
+            IGenericRepository<MoneyRecord> moneyRecords, 
+            IGenericRepository<TimeRecord> timeRecords,
+            IGenericRepository<UserMoneyRecord> userMoneyRecords,
+            IGenericRepository<UserTimeRecord> userTimeRecords, 
+            IGenericRepository<Category> category)
         {
             _context = context;
+            Users = users;
+            MoneyRecords = moneyRecords;
+            TimeRecords = timeRecords;
+            UserMoneyRecords = userMoneyRecords;
+            UserTimeRecords = userTimeRecords;
+            Category = category;
         }
 
         public void Dispose()

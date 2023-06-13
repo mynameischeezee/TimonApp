@@ -5,6 +5,7 @@ using Timon.Maui.ViewModels.MoneyRecord;
 using Timon.Maui.ViewModels.Settings;
 using Timon.Maui.ViewModels.Statistics;
 using Timon.Maui.ViewModels.TimeRecord;
+using Timon.Maui.ViewModels.Recommendations;
 
 namespace Timon.Maui.Extensions
 {
@@ -24,7 +25,7 @@ namespace Timon.Maui.Extensions
             builder.Services.AddSingleton<TimeRecordsViewModel>();
             builder.Services.AddSingleton<StatisticsViewModel>();
             builder.Services.AddSingleton<AddCategoryViewModel>();
-
+            builder.Services.AddSingleton<RecommendationViewModel>();
             return builder;
         }
     }

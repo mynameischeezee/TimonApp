@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Timon.Maui.Views.Recommendations.RecommendationsPage">
+    <ScrollView>
+        <VerticalStackLayout Margin="30,30,30,10">
+            <HorizontalStackLayout>
+                <Label FontSize="24" FontFamily="OpenSansMedium" Text="Dear,"></Label>
+                <Label FontSize="24" FontFamily="OpenSansMediumItalic" Text=" maksprofy51."></Label>
+            </HorizontalStackLayout>
+            <VerticalStackLayout Margin="10">
+                <Label FontSize="22" FontFamily="OpenSansLight" Text="  Based on our assessment of your recent spending habits and time management, we have noticed that you seem to be spending significant amounts of time and money in the following categories:"></Label>
+                <Label FontSize="24" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="Procrastination, Diploma, and Food."></Label>
+            </VerticalStackLayout>
+            <Label FontSize="22" FontFamily="OpenSansLight" Text="  To help you optimize your time and financial resources, we have tailored a few recommendations:"></Label>
+            <VerticalStackLayout Margin="10">
+                <VerticalStackLayout>
+                    <Label FontSize="22" FontFamily="OpenSansLight" Text="Decrease amount of time spending in "></Label>
+                    <Label FontSize="22" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="Procrastination category."></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label LineBreakMode="WordWrap" FontSize="22" FontFamily="OpenSansLight" Text="Decrease amount of time spending in "></Label>
+                    <Label LineBreakMode="WordWrap" FontSize="22" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="Test category."></Label>
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="20"  HorizontalOptions="Center">
+                    <Label FontSize="15" FontFamily="OpenSansLight" Text="We believe in you. "></Label>
+                    <Label HorizontalOptions="Center" FontSize="15" FontFamily="OpenSansLight" Text="Timon."></Label>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

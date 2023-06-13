@@ -21,10 +21,10 @@ namespace Timon.Maui.ViewModels.TimeRecord
         private DateTime _selectedDate;
 
         [ObservableProperty]
-        private DateTime _timeFrom;
+        private TimeSpan _timeFrom;
 
         [ObservableProperty]
-        private DateTime _timeTo;
+        private TimeSpan _timeTo;
 
         [ObservableProperty]
         private ObservableCollection<Category> _categories = new();
@@ -53,8 +53,8 @@ namespace Timon.Maui.ViewModels.TimeRecord
             {
                 Name = this.Name,
                 Description = this.Description,
-                DateFrom = SelectedDate.Date.Add(TimeSpan.FromHours(TimeFrom.Hour) + TimeSpan.FromMinutes(TimeFrom.Minute)),
-                DateTo = SelectedDate.Date.Add(TimeSpan.FromHours(TimeTo.Hour) + TimeSpan.FromMinutes(TimeTo.Minute)),
+                DateFrom = SelectedDate.Date + TimeFrom,
+                DateTo = SelectedDate.Date + TimeTo,
                 CategoryId = SelectedCategory.Id,
             };
             await _timeRecordService.CreateTimeRecord(user!, timeRecord);
@@ -72,8 +72,8 @@ namespace Timon.Maui.ViewModels.TimeRecord
             var user = await _userService.GetUserByNickname(CurrentSession.CurrentUserNickname!);
             var categories = await _categoryService.GetAllUsersCategories(user!);
             Categories = new ObservableCollection<Category>(categories);
-            TimeFrom = DateTime.Now;
-            TimeTo = DateTime.Now;
+            TimeFrom = TimeSpan.Zero;
+            TimeTo = TimeSpan.Zero;
             SelectedDate = DateTime.Now;
             SelectedCategory = Categories.First();
         }

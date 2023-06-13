@@ -5,44 +5,77 @@ using LiveChartsCore.Defaults;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using Timon.Abstract.Services.Statistics;
+using Timon.Abstract.Services.User;
+using Timon.Business.Services.Statistics;
+using Timon.Business.Services.User;
 using Timon.DataAccess.Models;
+using Timon.Maui.Properties;
 
 namespace Timon.Maui.ViewModels.Statistics
 {
     public partial class StatisticsViewModel : ObservableObject
     {
-        private readonly Random _random = new();
+        private readonly IUserService<User> _userService;
 
-        public StatisticsViewModel()
+        private readonly IStatisticsService<DataAccess.Models.User,
+            DataAccess.Models.Category,
+            DataAccess.Models.MoneyRecord,
+            DataAccess.Models.TimeRecord> _statisticsService;
+
+        [ObservableProperty] private IEnumerable<ISeries> _categoriesSeries;
+
+        [ObservableProperty] private ISeries[] _moneyRecordsSeries;
+
+        [ObservableProperty] private ISeries[] _timeRecordsSeries;
+
+        public StatisticsViewModel(
+            IStatisticsService<User, Category, DataAccess.Models.MoneyRecord, DataAccess.Models.TimeRecord>
+                statisticsService, IUserService<User> userService)
         {
-            ObservableValue1 = new ObservableValue { Value = 50 };
-            ObservableValue2 = new ObservableValue { Value = 80 };
-            ObservableValue3 = new ObservableValue { Value = 10 };
-            ObservableValue4 = new ObservableValue { Value = 90 };
+            _statisticsService = statisticsService;
+            _userService = userService;
+            GenerateValues();
+        }
 
-            Series = new GaugeBuilder()
+        private async void GenerateValues()
+        {
+            var from = DateTime.Now;
+            var to = DateTime.Today.AddDays(-30);
+            var user = await _userService.GetUserByNickname(CurrentSession.CurrentUserNickname!);
+            var categoriesStatistics = await _statisticsService.GenerateCategoriesStatistics(user!, from, to);
+            var series = new GaugeBuilder()
                 .WithOffsetRadius(5)
-                .WithLabelsPosition(PolarLabelsPosition.Start)
-                .AddValue(ObservableValue1, "Procrastination")
-                .AddValue(ObservableValue2, "Diploma")
-                .AddValue(ObservableValue3, "Food")
-                .AddValue(ObservableValue4, "Work")
-                .BuildSeries();
+                .WithLabelsSize(30)
+                .WithInnerRadius(20)
+                .WithLabelsPosition(PolarLabelsPosition.Start);
+            foreach (var category in categoriesStatistics)
+            {
+                series.AddValue(new ObservableValue(category.Value), category.Key.Name);
+            }
+
+            CategoriesSeries = series.BuildSeries();
+
+            var moneyRecordsStatistics = (await _statisticsService.GenerateMoneyRecordsStatistics(user!, from, to)).ToList();
+            MoneyRecordsSeries = new ISeries[]
+            {
+                new LineSeries<double>
+                {
+                    Values = moneyRecordsStatistics,
+                    Fill = null
+                }
+            };
+
+            var timeRecordsStatistics = (await _statisticsService.GenerateTimeRecordsStatistics(user!, from, to)).ToList();
+            TimeRecordsSeries = new ISeries[]
+            {
+                new LineSeries<double>
+                {
+                    Values = timeRecordsStatistics,
+                    Fill = null
+                }
+            };
+
         }
-
-        public ObservableValue ObservableValue1 { get; set; }
-        public ObservableValue ObservableValue2 { get; set; }
-        public ObservableValue ObservableValue3 { get; set; }
-        public ObservableValue ObservableValue4 { get; set; }
-        public IEnumerable<ISeries> Series { get; set; }
-
-        [RelayCommand]
-        public void DoRandomChange()
-        {
-            ObservableValue1.Value = _random.Next(0, 100);
-            ObservableValue2.Value = _random.Next(0, 100);
-        }
-
-
+        
     }
 }

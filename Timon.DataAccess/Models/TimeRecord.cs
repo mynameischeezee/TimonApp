@@ -13,5 +13,8 @@ namespace Timon.DataAccess.Models
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+        [NotMapped]
+        public string Duration => (DateTo - DateFrom).TotalMinutes.ToString();
     }
 }

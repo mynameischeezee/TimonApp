@@ -58,7 +58,7 @@ namespace Timon.Maui.ViewModels.Authentication
                 NotificationId = 1111,
                 Title = "Timon.",
                 Subtitle = "Money and budget tracker.",
-                Description = "Hey! {nickName}. Thank you for joining to Timon family",
+                Description = $"Hey! {nickName}. Thank you for joining to Timon family",
                 BadgeNumber = 1,
                 Schedule = new NotificationRequestSchedule()
                 {
@@ -75,7 +75,7 @@ namespace Timon.Maui.ViewModels.Authentication
                 NotificationId = 1112,
                 Title = "Timon.",
                 Subtitle = "Money and budget tracker.",
-                Description = $"Hey! {nickName}. How is your productivity today?",
+                Description = $"Hello {nickName}!. How is your productivity today?",
                 BadgeNumber = 1,
                 Schedule = new NotificationRequestSchedule()
                 {

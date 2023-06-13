@@ -21,10 +21,10 @@ namespace Timon.Maui.ViewModels.TimeRecord
         private DateTime _selectedDate;
 
         [ObservableProperty]
-        private DateTime _timeFrom;
+        private TimeSpan _timeFrom;
 
         [ObservableProperty]
-        private DateTime _timeTo;
+        private TimeSpan _timeTo;
 
         [ObservableProperty]
         private ObservableCollection<Category> _categories = new();
@@ -50,8 +50,8 @@ namespace Timon.Maui.ViewModels.TimeRecord
             var user = await _userService.GetUserByNickname(CurrentSession.CurrentUserNickname!);
             var timeRecord = await _timeRecordService.GetTimeRecord(CurrentSession.CurrentTimeRecord!);
             timeRecord!.Name = this.Name;
-            timeRecord.DateFrom = TimeFrom;
-            timeRecord.DateTo = TimeTo;
+            timeRecord.DateFrom = SelectedDate.Date + TimeFrom;
+            timeRecord.DateTo = SelectedDate.Date + TimeTo;
             timeRecord.Description = this.Description;
             timeRecord.CategoryId = SelectedCategory.Id;
             await _timeRecordService.UpdateTimeRecord(timeRecord);
@@ -79,8 +79,9 @@ namespace Timon.Maui.ViewModels.TimeRecord
             var timeRecord = await _timeRecordService.GetTimeRecord(CurrentSession.CurrentTimeRecord!);
             Categories = new ObservableCollection<DataAccess.Models.Category>(categories);
             Name = timeRecord!.Name;
-            TimeFrom = timeRecord.DateFrom;
-            TimeFrom = timeRecord.DateTo;
+            SelectedDate = timeRecord.DateFrom.Date;
+            TimeFrom = timeRecord.DateFrom - timeRecord.DateFrom.Date;
+            TimeTo = timeRecord.DateTo - timeRecord.DateTo.Date;
             Description = timeRecord.Description!;
             SelectedCategory = Categories.First(x => x.Id == timeRecord.CategoryId);
         }

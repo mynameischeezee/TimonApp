@@ -39,7 +39,6 @@ namespace Timon.Maui.ViewModels.MoneyRecord
             _moneyRecordService = moneyRecordService;
             _userService = userService;
             _categoryService = categoryService;
-            Update();
         }
 
         [RelayCommand]

@@ -8,7 +8,8 @@
     xmlns:timeRecordViews="clr-namespace:Timon.Maui.Views.TimeRecord"
     xmlns:settingsViews="clr-namespace:Timon.Maui.Views.Settings"
     xmlns:statisticsViews="clr-namespace:Timon.Maui.Views.Statistics"
-    xmlns:authentication="clr-namespace:Timon.Maui.Views.Authentication">
+    xmlns:authentication="clr-namespace:Timon.Maui.Views.Authentication"
+    xmlns:recommendations="clr-namespace:Timon.Maui.Views.Recommendations">
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Money records"
                       Icon="{AppThemeBinding Light=money_dark.png, Dark=money_light.svg}"
@@ -23,6 +24,10 @@
         <ShellContent Title="Statistics"
                       Icon="{AppThemeBinding Light=statistics_dark.png, Dark=statistics_light.svg}"
                       ContentTemplate="{DataTemplate statisticsViews:StatisticsPage}" />
+
+        <ShellContent Title="Recommendations"
+                      Icon="{AppThemeBinding Light=recommendations_dark.png, Dark=statistics_light.svg}"
+                      ContentTemplate="{DataTemplate recommendations:RecommendationsPage}" />
     </FlyoutItem>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Profile"

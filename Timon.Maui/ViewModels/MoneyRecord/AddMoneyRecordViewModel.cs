@@ -51,7 +51,7 @@ namespace Timon.Maui.ViewModels.MoneyRecord
                 Description = this.Description,
                 Amount = this.Amount,
                 Date = this.SelectedDate,
-                CategoryId = SelectedCategory.Id
+                CategoryId = this.SelectedCategory.Id
             };
             await _moneyRecordService.CreateMoneyRecord(user!, moneyRecord);
             await Shell.Current.GoToAsync("../");

@@ -4,14 +4,31 @@
              x:Class="Timon.Maui.Views.Statistics.StatisticsPage"
              xmlns:statisticsViewModels="clr-namespace:Timon.Maui.ViewModels.Statistics"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui">
-    <lvc:PieChart
-            LegendPosition="Left"
-            Series="{Binding Series}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label HorizontalOptions="Center" FontFamily="OpenSansMediumItalic" FontSize="20"  Text="Categories statistics for past 30 days"></Label>
+        <lvc:PieChart
+            VerticalOptions="Start"
+            Grid.Row="1"
+            Series="{Binding CategoriesSeries}"
             WidthRequest="300"
+            HeightRequest="200"
+            LegendTextSize="40"
             InitialRotation="-90"
-            Total="100"
-            TooltipTextSize="52"
-            LegendTextSize="52"
-            MaxAngle="285">
+            Total="3"
+            MaxAngle="270"
+            LegendPosition="Right">
         </lvc:PieChart>
+        <Label Grid.Row="2" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="OpenSansMediumItalic" FontSize="20"  Text="MoneyRecords statistics for past 30 days"></Label>
+        <lvc:CartesianChart Grid.Row="3" Series="{Binding MoneyRecordsSeries}"/>
+        <Label Grid.Row="4" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="OpenSansMediumItalic" FontSize="20"  Text="TimeRecords statistics for past 30 days"></Label>
+        <lvc:CartesianChart Grid.Row="5" Series="{Binding TimeRecordsSeries}"/>
+    </Grid>
 </ContentPage>

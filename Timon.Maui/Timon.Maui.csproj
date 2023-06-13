@@ -77,6 +77,9 @@
       <Compile Update="Views\Categories\AddCategoryPage.xaml.cs">
         <DependentUpon>AddCategoryPage.xaml</DependentUpon>
       </Compile>
+      <Compile Update="Views\Recommendations\RecommendationsPage.xaml.cs">
+        <DependentUpon>RecommendationsPage.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -93,6 +96,9 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\MoneyRecord\MoneyRecordsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Recommendations\RecommendationsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\Settings\ProfilePage.xaml">
@@ -117,6 +123,7 @@
 
     <ItemGroup>
       <Folder Include="ViewModels\Categories\" />
+      <Folder Include="ViewModels\Recommendations\" />
     </ItemGroup>
 
 </Project>

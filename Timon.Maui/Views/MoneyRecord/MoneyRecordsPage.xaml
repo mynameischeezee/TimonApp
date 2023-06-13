@@ -9,21 +9,39 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <HorizontalStackLayout VerticalOptions="Center">
+                            <HorizontalStackLayout Margin="20" VerticalOptions="Center">
                                 <StackLayout WidthRequest="140">
-                                    <Label Margin="10" FontFamily="OpenSansMedium" Text="{Binding Name}" FontSize="22" />
-                                    <Label Margin="10,-13,0,0" FontFamily="OpenSansLightItalic" Text="{Binding Description}" FontSize="17" />
+                                    <Label FontFamily="OpenSansMedium" Text="{Binding Name}" FontSize="18" />
+                                    <Label Padding="0,-3,0,0" FontFamily="OpenSansLightItalic"
+                                           Text="{Binding Description}"
+                                           FontSize="15" />
                                 </StackLayout>
-                                <StackLayout Margin="15">
+                                <StackLayout WidthRequest="170">
+                                    <HorizontalStackLayout VerticalOptions="Center">
+                                        <Label FontFamily="OpenSansMedium" Text="Date: "></Label>
+                                        <Label FontFamily="OpenSansBoldItalic"
+                                               Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}"
+                                               TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" />
+                                    </HorizontalStackLayout>
                                     <HorizontalStackLayout VerticalOptions="Center">
                                         <Label Text="Amount: "></Label>
-                                        <Label FontFamily="OpenSansRegularItalic" Text="{Binding Amount}" />
+                                        <HorizontalStackLayout>
+                                        <Label Text="{Binding Amount}" FontFamily="OpenSansBoldItalic" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" />
+                                        <Label Text=" UAH" FontFamily="OpenSansBoldItalic" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" />
+                                        </HorizontalStackLayout>
                                     </HorizontalStackLayout>
-                                    <Label FontFamily="OpenSansLightItalic" FontSize="15" Text="{Binding Date, StringFormat='{}{0:MM/dd/yyyy'}" />
+                                    <Label FontFamily="OpenSansLightItalic" Text="{Binding Date}" FontSize="15" />
                                 </StackLayout>
-                                <Button ImageSource="{AppThemeBinding Dark=pencil_dark.png Light=pencil_light.png}" ContentLayout="Top,0"  Margin="10" Text="" WidthRequest="40" HeightRequest="40"  Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.NavigateToDetailsCommand}" CommandParameter="{Binding Id}"></Button>
+                                <Button ImageSource="{AppThemeBinding Dark=pencil_dark.png, Light=pencil_light.png}"
+                                        ContentLayout="Top,0"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        HorizontalOptions="End"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type Page}}, Path=BindingContext.NavigateToDetailsCommand}"
+                                        CommandParameter="{Binding Id}">
+                                </Button>
                             </HorizontalStackLayout>
-                        </ViewCell.View>
+                        </ViewCell.View>    
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

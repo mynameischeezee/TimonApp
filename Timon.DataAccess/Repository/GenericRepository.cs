@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Timon.Abstract.DataAccess;
 using Timon.Abstract.DataAccess.Repository;
 using Timon.DataAccess.Context;
+using Timon.DataAccess.Models;
 
 namespace Timon.DataAccess.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly TimonDbContext _context;
         private readonly DbSet<T> _db;
@@ -72,6 +74,11 @@ namespace Timon.DataAccess.Repository
 
         public void Update(T entity)
         {
+            var trackedEntity = _context.ChangeTracker.Entries<T>().FirstOrDefault(e => e.Entity.Id == entity.Id);
+            if (trackedEntity != null)
+            {
+                trackedEntity.State = EntityState.Detached;
+            }
             _db.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }

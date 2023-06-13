@@ -6,12 +6,12 @@
         <Label Text="Add new category" FontSize="24" FontFamily="OpenSansBold" HorizontalOptions="Center" Margin="0,0,0,20" HorizontalTextAlignment="Center" />
         <Entry WidthRequest="300"  Placeholder="Name" Text="{Binding CategoryName}"/>
         <StackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Category priority: " HorizontalTextAlignment="Center" Margin="3,0,0,0"/>
-                <Label Text="{Binding CategoryPriority}"></Label>
+            <HorizontalStackLayout Margin="0,20,0,0">
+                <Label Text="Category priority: " HorizontalTextAlignment="Center" Margin="10,0,0,0"/>
+                <Label Text="{Binding CategoryPriority}" FontFamily="OpenSansBoldItalic" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}"></Label>
             </HorizontalStackLayout>
-            <Slider Minimum ="-10" Maximum="10" Value="{Binding CategoryPriority}" Margin="10"/>
+            <Slider WidthRequest="320" Minimum ="-10" Maximum="10"  Value="{Binding CategoryPriority}" />
         </StackLayout>
-        <Button Text="Save" Command="{Binding SaveCategoryCommand}"></Button>
+        <Button Margin="20" Text="Save" Command="{Binding SaveCategoryCommand}"></Button>
     </VerticalStackLayout>
 </ContentPage>

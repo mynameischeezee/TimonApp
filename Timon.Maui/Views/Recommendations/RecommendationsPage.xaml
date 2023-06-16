@@ -6,22 +6,22 @@
     <ScrollView>
         <VerticalStackLayout Margin="30,30,30,10">
             <HorizontalStackLayout>
-                <Label FontSize="24" FontFamily="OpenSansMedium" Text="Dear,"></Label>
-                <Label FontSize="24" FontFamily="OpenSansMediumItalic" Text=" maksprofy51."></Label>
+                <Label FontSize="24" FontFamily="OpenSansMedium" Text="Dear, "></Label>
+                <Label FontSize="24" FontFamily="OpenSansMediumItalic" Text="{Binding UserName}"></Label>
             </HorizontalStackLayout>
             <VerticalStackLayout Margin="10">
                 <Label FontSize="22" FontFamily="OpenSansLight" Text="  Based on our assessment of your recent spending habits and time management, we have noticed that you seem to be spending significant amounts of time and money in the following categories:"></Label>
-                <Label FontSize="24" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="Procrastination, Diploma, and Food."></Label>
+                <Label FontSize="24" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="{Binding WorstCategories}"></Label>
             </VerticalStackLayout>
             <Label FontSize="22" FontFamily="OpenSansLight" Text="  To help you optimize your time and financial resources, we have tailored a few recommendations:"></Label>
             <VerticalStackLayout Margin="10">
                 <VerticalStackLayout>
-                    <Label FontSize="22" FontFamily="OpenSansLight" Text="Decrease amount of time spending in "></Label>
-                    <Label FontSize="22" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="Procrastination category."></Label>
+                    <Label FontSize="22" FontFamily="OpenSansLight" Text="Decrease amount of money spending in "></Label>
+                    <Label FontSize="22" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="{Binding WorstMoneyCategory}"></Label>
                 </VerticalStackLayout>
                 <VerticalStackLayout>
                     <Label LineBreakMode="WordWrap" FontSize="22" FontFamily="OpenSansLight" Text="Decrease amount of time spending in "></Label>
-                    <Label LineBreakMode="WordWrap" FontSize="22" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="Test category."></Label>
+                    <Label LineBreakMode="WordWrap" FontSize="22" Margin="10" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" FontFamily="OpenSansMediumItalic" Text="{Binding WorstTimeCategory}"></Label>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="20"  HorizontalOptions="Center">
                     <Label FontSize="15" FontFamily="OpenSansLight" Text="We believe in you. "></Label>

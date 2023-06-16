@@ -14,4 +14,10 @@ public partial class RecommendationsPage : ContentPage
         InitializeComponent();
         this.BindingContext = recommendationViewModel;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        (BindingContext as RecommendationViewModel)?.Update();
+    }
 }

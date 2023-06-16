@@ -9,6 +9,7 @@
     <ItemGroup>
       <Folder Include="DataAccess\Repository\" />
       <Folder Include="Services\Categories\" />
+      <Folder Include="Services\Recommendations\" />
       <Folder Include="Services\Statistics\" />
       <Folder Include="Services\User\" />
       <Folder Include="Services\TimeRecord\" />

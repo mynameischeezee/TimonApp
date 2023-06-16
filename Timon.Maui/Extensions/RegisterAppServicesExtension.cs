@@ -3,12 +3,14 @@ using MonoBankApi;
 using Timon.Abstract.DataAccess.Repository;
 using Timon.Abstract.Services.Categories;
 using Timon.Abstract.Services.MoneyRecord;
+using Timon.Abstract.Services.Recommendations;
 using Timon.Abstract.Services.Statistics;
 using Timon.Abstract.Services.TimeRecord;
 using Timon.Abstract.Services.User;
 using Timon.Business.Auth0;
 using Timon.Business.Services.Categories;
 using Timon.Business.Services.MoneyRecord;
+using Timon.Business.Services.Recommendations;
 using Timon.Business.Services.Statistics;
 using Timon.Business.Services.TimeRecord;
 using Timon.Business.Services.User;
@@ -41,7 +43,8 @@ namespace Timon.Maui.Extensions
             builder.Services.AddScoped<ITimeRecordService<TimeRecord, User>, TimeRecordService>();
             builder.Services.AddScoped<IStatisticsService<User, Category, MoneyRecord, TimeRecord>, StatisticsService>();
             builder.Services.AddScoped<ICategoryService<Category, User>, CategoryService>();
-            
+            builder.Services.AddScoped<IRecommendationsService<User>, RecommendationService>();
+
             builder.Services.AddAutoMapper(typeof(MapConfiguration));
             builder.Services.AddMonoApi("u9gPDp_bhAXMR6Jsk2IFISgzoVq4VtweErqFxW-GM3TY");
             builder.Services.AddSingleton(new Auth0Client(new()

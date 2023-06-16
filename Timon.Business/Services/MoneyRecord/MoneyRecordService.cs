@@ -26,7 +26,7 @@ public class MoneyRecordService : IMoneyRecordService<DataAccess.Models.MoneyRec
         {
             Name = "",
             Description = lastMonoTransaction.Description,
-            Amount = ((int)lastMonoTransaction.Amount / 100),
+            Amount = Math.Abs((int)lastMonoTransaction.Amount / 100),
             Date = DateTime.Now,
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now

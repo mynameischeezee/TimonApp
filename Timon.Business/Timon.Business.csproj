@@ -15,6 +15,7 @@
     <ItemGroup>
       <Folder Include="Services\MoneyRecord\" />
       <Folder Include="Auth0\" />
+      <Folder Include="Services\Recommendations\" />
       <Folder Include="Services\Statistics\" />
       <Folder Include="Services\User\" />
       <Folder Include="Services\TimeRecord\" />

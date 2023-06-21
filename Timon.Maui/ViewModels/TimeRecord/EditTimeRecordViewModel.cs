@@ -1,34 +1,45 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using Timon.Abstract.Services.Categories;
 using Timon.Abstract.Services.TimeRecord;
 using Timon.Abstract.Services.User;
 using Timon.DataAccess.Models;
 using Timon.Maui.Properties;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Timon.Maui.ViewModels.TimeRecord
 {
-    public partial class EditTimeRecordViewModel : ObservableObject
+    public partial class EditTimeRecordViewModel : ObservableValidator
     {
+        [Required(ErrorMessage = "Name is Required Field!")]
+        [MinLength(5, ErrorMessage = "Name length is minimum 5!")]
+        [MaxLength(15, ErrorMessage = "Name length is maximum 15!")]
         [ObservableProperty]
         private string _name;
 
+        [MaxLength(15, ErrorMessage = "Text length is maximum 15!")]
         [ObservableProperty]
         private string _description;
 
+        [Required(ErrorMessage = "Date is required Field!")]
         [ObservableProperty]
         private DateTime _selectedDate;
 
+        [Required(ErrorMessage = "Time from is required Field!")]
         [ObservableProperty]
         private TimeSpan _timeFrom;
 
+        [Required(ErrorMessage = "Time to is required Field!")]
         [ObservableProperty]
         private TimeSpan _timeTo;
 
         [ObservableProperty]
         private ObservableCollection<Category> _categories = new();
 
+        [Required(ErrorMessage = "Category is required Field!")]
         [ObservableProperty]
         private Category _selectedCategory;
 
@@ -47,9 +58,11 @@ namespace Timon.Maui.ViewModels.TimeRecord
         [RelayCommand]
         private async void SaveTimeRecord()
         {
+            ValidateAllProperties();
+            if (HasErrors) return;
             var user = await _userService.GetUserByNickname(CurrentSession.CurrentUserNickname!);
             var timeRecord = await _timeRecordService.GetTimeRecord(CurrentSession.CurrentTimeRecord!);
-            timeRecord!.Name = this.Name;
+            timeRecord!.Name = Name;
             timeRecord.DateFrom = SelectedDate.Date + TimeFrom;
             timeRecord.DateTo = SelectedDate.Date + TimeTo;
             timeRecord.Description = this.Description;
@@ -70,6 +83,12 @@ namespace Timon.Maui.ViewModels.TimeRecord
         private async void NavigateToCategoryCreation()
         {
             await Shell.Current.GoToAsync("Categories/addCategory");
+        }
+
+        [RelayCommand]
+        void Validate()
+        {
+            ValidateAllProperties();
         }
 
         public async void Update()

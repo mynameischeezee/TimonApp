@@ -10,4 +10,6 @@ public interface IMoneyRecordService<TRecord, in TUser>
     Task<TRecord> UpdateMoneyRecord(TRecord record);
     Task<IEnumerable<TRecord>> GetAllUsersMoneyRecords(TUser user);
     Task<TRecord?> GetMoneyRecord(int id);
+
+    Task<TRecord?> GetMoneyRecordFromPlaid(TUser user);
 }

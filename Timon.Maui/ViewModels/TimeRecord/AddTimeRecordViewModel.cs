@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using Timon.Abstract.Services.Categories;
 using Timon.Abstract.Services.TimeRecord;
 using Timon.Abstract.Services.User;
@@ -9,26 +10,34 @@ using Timon.Maui.Properties;
 
 namespace Timon.Maui.ViewModels.TimeRecord
 {
-    public partial class AddTimeRecordViewModel : ObservableObject
+    public partial class AddTimeRecordViewModel : ObservableValidator
     {
+        [Required(ErrorMessage = "Name is Required Field!")]
+        [MinLength(5, ErrorMessage = "Name length is minimum 5!")]
+        [MaxLength(15, ErrorMessage = "Name length is maximum 15!")]
         [ObservableProperty]
         private string _name;
 
+        [MaxLength(15, ErrorMessage = "Text length is maximum 15!")]
         [ObservableProperty]
         private string _description;
 
+        [Required(ErrorMessage = "Date is required Field!")]
         [ObservableProperty]
         private DateTime _selectedDate;
 
+        [Required(ErrorMessage = "Time from is required Field!")]
         [ObservableProperty]
         private TimeSpan _timeFrom;
 
+        [Required(ErrorMessage = "Time to is required Field!")]
         [ObservableProperty]
         private TimeSpan _timeTo;
 
         [ObservableProperty]
         private ObservableCollection<Category> _categories = new();
 
+        [Required(ErrorMessage = "Category is required Field!")]
         [ObservableProperty]
         private Category _selectedCategory;
 
@@ -60,6 +69,8 @@ namespace Timon.Maui.ViewModels.TimeRecord
             await _timeRecordService.CreateTimeRecord(user!, timeRecord);
             await Shell.Current.GoToAsync("../");
         }
+
+
 
         [RelayCommand]
         private async void NavigateToNewCategoryCreation()

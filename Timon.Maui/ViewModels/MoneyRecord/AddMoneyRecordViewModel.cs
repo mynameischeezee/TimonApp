@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using Timon.Abstract.Services.Categories;
 using Timon.Abstract.Services.MoneyRecord;
 using Timon.Abstract.Services.User;
@@ -9,23 +10,31 @@ using Timon.Maui.Properties;
 
 namespace Timon.Maui.ViewModels.MoneyRecord
 {
-    public partial class AddMoneyRecordViewModel : ObservableObject
+    public partial class AddMoneyRecordViewModel : ObservableValidator
     {
+        [Required(ErrorMessage = "Name is Required Field!")]
+        [MinLength(5, ErrorMessage = "Name length is minimum 5!")]
+        [MaxLength(15, ErrorMessage = "Name length is maximum 15!")]
         [ObservableProperty]
         private string _name;
 
+        [MaxLength(15, ErrorMessage = "Text length is maximum 15!")]
         [ObservableProperty]
         private string _description;
 
+        [Required(ErrorMessage = "Date is required Field!")]
         [ObservableProperty]
         private DateTime _selectedDate;
 
+        [Required(ErrorMessage = "Amount is required Field!")]
+        [Range(1,int.MaxValue, ErrorMessage = "Please enter valid amount")]
         [ObservableProperty]
         private int _amount;
 
         [ObservableProperty]
         private ObservableCollection<Category> _categories = new();
 
+        [Required(ErrorMessage = "Category is required Field!")]
         [ObservableProperty]
         private Category _selectedCategory;
 
@@ -62,6 +71,17 @@ namespace Timon.Maui.ViewModels.MoneyRecord
         {
             var user = await _userService.GetUserByNickname(CurrentSession.CurrentUserNickname!);
             var moneyRecord = await _moneyRecordService.GetLastTransactionFromBank(user!);
+            Name = moneyRecord.Name;
+            Description = moneyRecord.Description!;
+            Amount = moneyRecord.Amount;
+            SelectedDate = moneyRecord.Date;
+        }
+
+        [RelayCommand]
+        private async void GetLastTransactionFromPlaid()
+        {
+            var user = await _userService.GetUserByNickname(CurrentSession.CurrentUserNickname!);
+            var moneyRecord = await _moneyRecordService.GetMoneyRecordFromPlaid(user!);
             Name = moneyRecord.Name;
             Description = moneyRecord.Description!;
             Amount = moneyRecord.Amount;

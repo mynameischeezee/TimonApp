@@ -6,7 +6,7 @@ using Timon.Maui.Properties;
 
 namespace Timon.Maui.ViewModels.Settings
 {
-    public partial class ProfileViewModel : ObservableObject
+    public partial class ProfileViewModel : ObservableValidator
     {
         [ObservableProperty]
         private string _userName;
@@ -33,7 +33,7 @@ namespace Timon.Maui.ViewModels.Settings
             UserPicture = CurrentSession.CurrentUserPic!;
             UserName = CurrentSession.CurrentUserNickname!;
             UserJoinedDate = user!.CreatedAt.ToShortDateString();
-            MonobankApiKey = user.MonoBankApiKey;
+            MonobankApiKey = user.MonoBankApiKey!;
         }
 
         [RelayCommand]

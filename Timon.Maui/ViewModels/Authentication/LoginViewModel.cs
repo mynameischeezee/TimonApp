@@ -1,11 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Going.Plaid;
 using Plugin.LocalNotification;
 using Timon.Abstract.Services.MoneyRecord;
 using Timon.Abstract.Services.User;
 using Timon.Business.Auth0;
 using Timon.DataAccess.Models;
 using Timon.Maui.Properties;
+using Environment = Going.Plaid.Environment;
 
 namespace Timon.Maui.ViewModels.Authentication
 {

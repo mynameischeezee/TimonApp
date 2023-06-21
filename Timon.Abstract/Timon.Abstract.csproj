@@ -9,6 +9,8 @@
     <ItemGroup>
       <Folder Include="DataAccess\Repository\" />
       <Folder Include="Services\Categories\" />
+      <Folder Include="Services\Notifications\" />
+      <Folder Include="Services\Recommendations\" />
       <Folder Include="Services\Statistics\" />
       <Folder Include="Services\User\" />
       <Folder Include="Services\TimeRecord\" />
@@ -19,6 +21,7 @@
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+      <PackageReference Include="Plugin.LocalNotification" Version="10.1.5" />
     </ItemGroup>
 
 </Project>

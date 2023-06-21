@@ -26,7 +26,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{EBD4
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timon.DatabaseMigrator", "Timon.DatabaseMigrator\Timon.DatabaseMigrator.csproj", "{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.DatabaseMigrator", "Timon.DatabaseMigrator\Timon.DatabaseMigrator.csproj", "{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timon.UnitTests", "Timon.UnitTests\Timon.UnitTests.csproj", "{A0697C91-99ED-42EF-819D-995506DC473C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0697C91-99ED-42EF-819D-995506DC473C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0697C91-99ED-42EF-819D-995506DC473C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0697C91-99ED-42EF-819D-995506DC473C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0697C91-99ED-42EF-819D-995506DC473C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,7 +19,25 @@
             <Label Text="Amount" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"/>
             <Entry Placeholder="Amount UAH" Keyboard="Numeric" Text="{Binding Amount}"/>
         </VerticalStackLayout>
-        <Button Text="Save" Command="{Binding SaveMoneyRecordCommand}" HorizontalOptions="FillAndExpand" Margin="40"/>
-        <Button Text="Get last transaction from bank" Command="{Binding GetLastTransactionFromBankCommand}" HorizontalOptions="FillAndExpand" Margin="20"/>
+        <StackLayout Margin="30" Spacing="20">
+            <Button Text="Get last transaction Mono" Command="{Binding GetLastTransactionFromBankCommand}" HorizontalOptions="FillAndExpand"/>
+            <HorizontalStackLayout>
+                <Button Text="Get last transaction from" Command="{Binding GetLastTransactionFromPlaidCommand}" />
+                <Picker MaximumWidthRequest="80" Title="Plaid bank">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Chase</x:String>
+                            <x:String>Bank of America</x:String>
+                            <x:String>Wells Fargo</x:String>
+                            <x:String>Citibank Online</x:String>
+                            <x:String>Navy Federal Credit Union</x:String>
+                            <x:String>American Express</x:String>
+                            <x:String>Firstmark Services</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </HorizontalStackLayout>
+        </StackLayout>
+        <Button Text="Save" Command="{Binding SaveMoneyRecordCommand}" HorizontalOptions="FillAndExpand" Margin="40,30,40,0"/>
     </VerticalStackLayout>
 </ContentPage>

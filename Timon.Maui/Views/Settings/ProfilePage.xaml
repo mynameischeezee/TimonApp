@@ -26,14 +26,21 @@
                 
             </VerticalStackLayout>
         </HorizontalStackLayout>
-        <VerticalStackLayout WidthRequest="300">
+        <VerticalStackLayout WidthRequest="300" Margin="20">
+            <Label FontSize="20" FontFamily="OpenSansMediumItalic" Text="Monobank ApiKey" TextColor="{StaticResource Primary}" Margin="3,0,0,0"></Label>
             <Entry IsEnabled="False" Placeholder="Monobank api key" Text="{Binding MonobankApiKey}"></Entry>
-            <Label Text="Need for having access to your Monobank transactions. See more here: https://api.monobank.ua/" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"></Label>
+            <Label FontSize="11" TextColor="{StaticResource Gray300}" Text="Need for having access to your Monobank transactions.,&#10;See more here: https://api.monobank.ua/" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"></Label>
+        </VerticalStackLayout>
+        <VerticalStackLayout WidthRequest="300">
+            <Label FontSize="20" FontFamily="OpenSansMediumItalic" Text="Plaid Integration" TextColor="{StaticResource Primary}" Margin="3,0,0,0"></Label>
+            <Entry IsEnabled="False" Placeholder="Plaid username" Text="6490859ef632490018bec882"></Entry>
+            <Entry IsEnabled="False" Placeholder="Plaid password" Text="74e358e90ff1c757eaf6e30b60d4df"  IsPassword="True"></Entry>
+            <Label FontSize="11" TextColor="{StaticResource Gray300}" Text="Plaid is the easier and safer way to provide access to the world's leading finance apps and services - helping you attract and retain more customers.,&#10;See more here: https://plaid.com/" FontFamily="OpenSansMediumItalic" Margin="3,0,0,0"></Label>
         </VerticalStackLayout>
         <StackLayout Margin="20">
             <Button Text="Save" Command="{Binding SaveProfileCommand}" />
         </StackLayout>
-        <StackLayout Margin="20">
+        <StackLayout Margin="40">
             <Button Text="Sign out" Command="{Binding SignOutCommand}" />
         </StackLayout>
     </VerticalStackLayout>

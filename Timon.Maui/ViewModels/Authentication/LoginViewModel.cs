@@ -51,6 +51,7 @@ namespace Timon.Maui.ViewModels.Authentication
         {
             await LocalNotificationCenter.Current.Show(CreateWelcomeNotification(userNickname));
             await LocalNotificationCenter.Current.Show(CreateWelcomeNotification(userNickname));
+            await LocalNotificationCenter.Current.Show(CreateRecommndationsNotification(userNickname));
         }
 
         private NotificationRequest CreateWelcomeNotification(string nickName)
@@ -82,6 +83,23 @@ namespace Timon.Maui.ViewModels.Authentication
                 Schedule = new NotificationRequestSchedule()
                 {
                     NotifyTime = DateTime.Now.AddHours(1),
+                    NotifyRepeatInterval = TimeSpan.FromHours(12)
+                }
+            };
+            return requset;
+        }
+        private NotificationRequest CreateRecommndationsNotification(string nickName)
+        {
+            var requset = new NotificationRequest()
+            {
+                NotificationId = 1112,
+                Title = "Timon.",
+                Subtitle = "Money and budget tracker.",
+                Description = $"Hey {nickName}!. You can do it! Decrease amount of time spending in procrastination category.",
+                BadgeNumber = 1,
+                Schedule = new NotificationRequestSchedule()
+                {
+                    NotifyTime = DateTime.Now.AddSeconds(5),
                     NotifyRepeatInterval = TimeSpan.FromHours(12)
                 }
             };

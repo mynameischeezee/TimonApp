@@ -7,4 +7,6 @@ public static class CurrentSession
     public static string? CurrentUserPic { get; set; }
     public static int CurrentTimeRecord { get; set; }
     public static int CurrentMoneyRecord { get; set; }
+    public static string? PlaidId { get; set; }
+    public static string? PlaidPass { get; set; }
 }

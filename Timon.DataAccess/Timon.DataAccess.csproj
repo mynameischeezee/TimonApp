@@ -28,7 +28,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Timon.Abstract\Timon.Abstract.csproj" />
-      <ProjectReference Include="..\Timon.Exceptions\Timon.Exceptions.csproj" />
     </ItemGroup>
 
     <ItemGroup>

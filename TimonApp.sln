@@ -5,7 +5,6 @@ VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.Maui", "Timon.Maui\Timon.Maui.csproj", "{8C4C818A-7172-46B4-B986-68814F6173D6}"
 	ProjectSection(ProjectDependencies) = postProject
-		{097E86D0-4CEF-47FA-B579-4559A2703053} = {097E86D0-4CEF-47FA-B579-4559A2703053}
 		{C5812D8E-3D68-4F69-9EBE-377889B65A6A} = {C5812D8E-3D68-4F69-9EBE-377889B65A6A}
 		{DDD1416D-C68C-4B27-99B0-89A4D2D1777E} = {DDD1416D-C68C-4B27-99B0-89A4D2D1777E}
 		{E5D43830-3A11-4C94-A8AA-BC8A7D4AB654} = {E5D43830-3A11-4C94-A8AA-BC8A7D4AB654}
@@ -17,8 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.DataAccess", "Timon.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.Business", "Timon.Business\Timon.Business.csproj", "{DDD1416D-C68C-4B27-99B0-89A4D2D1777E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.Exceptions", "Timon.Exceptions\Timon.Exceptions.csproj", "{097E86D0-4CEF-47FA-B579-4559A2703053}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{EBD4FA27-6C3D-47EF-AAD3-0762BC58C31D}"
 	ProjectSection(SolutionItems) = preProject
 		.env = .env
@@ -28,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{EBD4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.DatabaseMigrator", "Timon.DatabaseMigrator\Timon.DatabaseMigrator.csproj", "{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timon.UnitTests", "Timon.UnitTests\Timon.UnitTests.csproj", "{A0697C91-99ED-42EF-819D-995506DC473C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Timon.UnitTests", "Timon.UnitTests\Timon.UnitTests.csproj", "{A0697C91-99ED-42EF-819D-995506DC473C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +50,6 @@ Global
 		{DDD1416D-C68C-4B27-99B0-89A4D2D1777E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDD1416D-C68C-4B27-99B0-89A4D2D1777E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDD1416D-C68C-4B27-99B0-89A4D2D1777E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{097E86D0-4CEF-47FA-B579-4559A2703053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{097E86D0-4CEF-47FA-B579-4559A2703053}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{097E86D0-4CEF-47FA-B579-4559A2703053}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{097E86D0-4CEF-47FA-B579-4559A2703053}.Release|Any CPU.Build.0 = Release|Any CPU
 		{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CE0871-80A2-480C-B3AC-3060B2BA4FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU

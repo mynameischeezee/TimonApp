@@ -46,11 +46,11 @@ namespace Timon.Maui.Extensions
             builder.Services.AddScoped<IRecommendationsService<User>, RecommendationService>();
 
             builder.Services.AddAutoMapper(typeof(MapConfiguration));
-            builder.Services.AddMonoApi("u9gPDp_bhAXMR6Jsk2IFISgzoVq4VtweErqFxW-GM3TY");
+            builder.Services.AddMonoApi("");
             builder.Services.AddSingleton(new Auth0Client(new()
             {
-                Domain = "dev-xt8s3dz0w2ojvezt.us.auth0.com",
-                ClientId = "iXbCzyNO5kY228eJyt67fHVqmOLZPM4f",
+                Domain = "",
+                ClientId = "",
                 Scope = "openid profile",
                 RedirectUri = "myapp://callback"
             }));
